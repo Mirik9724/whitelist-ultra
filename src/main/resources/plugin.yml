@@ -1,0 +1,11 @@
+name: whitelist_ultra
+version: '0.2.0'
+main: net.Mirik9724.whitelist_ultra.Whitelist_ultra
+api-version: '1.18'
+description: Whitelist works with nicknames without uuid and case sensitive.
+
+commands:
+  whitelist-ultra:
+    aliases:
+      - wlu
+    usage: /whitelist-ultra <add|list|remove|reload> <player>
