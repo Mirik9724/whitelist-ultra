@@ -1,5 +1,5 @@
 name: whitelist_ultra
-version: '0.2.0'
+version: '0.2.3'
 main: net.Mirik9724.whitelist_ultra.Whitelist_ultra
 api-version: '1.18'
 description: Whitelist works with nicknames without uuid and case sensitive.
@@ -9,3 +9,22 @@ commands:
     aliases:
       - wlu
     usage: /whitelist-ultra <add|list|remove|reload> <player>
+    permission: whitelist-ultra.admin
+    permission-messange: You don not have permission for this command
+    subcommands:
+      add:
+        description: Add player to WL
+        permission: whitelist-ultra.add
+        permission-messange: You don not have permission for this command
+      remove:
+        description: Remove player to WL
+        permission: whitelist-ultra.remove
+        permission-messange: You don not have permission for this command
+      list:
+        description: Show WL
+        permission: whitelist-ultra.list
+        permission-messange: You don not have permission for this command
+      reload:
+        description: Reload plugin
+        permission: whitelist-ultra.reload
+        permission-messange: You don not have permission for this command
