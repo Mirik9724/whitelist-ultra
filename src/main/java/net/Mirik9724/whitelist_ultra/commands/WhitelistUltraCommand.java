@@ -18,9 +18,9 @@ public class WhitelistUltraCommand implements CommandExecutor {
     public WhitelistUltraCommand(JavaPlugin plugin) {
         this.plugin = plugin; // Инициализация поля
         // Регистрируем подкоманды
-        subCommands.put("add", new Add());
-        subCommands.put("list", new List());
-        subCommands.put("remove", new Remove());
+        subCommands.put("add", new Add(plugin));
+        subCommands.put("list", new List(plugin));
+        subCommands.put("remove", new Remove(plugin));
         subCommands.put("reload", new Reload(plugin)); // Передача плагина в команду reload
     }
 

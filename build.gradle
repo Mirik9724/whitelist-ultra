@@ -1,9 +1,10 @@
 plugins {
     id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.1.2' // Плагин для тенизации JAR-файла
 }
 
 group = 'net.Mirik9724'
-version = '0.2.3'
+version = '0.2.8'
 
 repositories {
     mavenCentral()
@@ -19,6 +20,8 @@ repositories {
 
 dependencies {
     compileOnly("org.spigotmc:spigot-api:1.18.2-R0.1-SNAPSHOT")
+
+    // Зависимости для работы с Jackson (для работы с JSON)
     implementation 'com.fasterxml.jackson.core:jackson-core:2.14.1'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.1'
     implementation 'com.fasterxml.jackson.core:jackson-annotations:2.14.1'
@@ -49,4 +52,14 @@ processResources {
     filesMatching('plugin.yml') {
         expand props
     }
+}
+
+// Настройка теневого JAR-файла для включения зависимостей
+shadowJar {
+    archiveClassifier.set('') // Убираем "shadow" в названии JAR-файла
+}
+
+// Убедитесь, что билд включает сборку теневого JAR
+tasks.build {
+    dependsOn shadowJar
 }

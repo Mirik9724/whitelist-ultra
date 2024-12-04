@@ -1,0 +1,11 @@
+plugin:
+  error:
+    file_: "test"
+    file_does_not-exist: "File does not exist"
+  commands:
+    usage: "Usage:"
+    add:
+      m2: " уже в вайтлисте."
+    list: "Whitelist: "
+    player: "Игрок "
+  reload: "&aThe plugin has been successfully reloaded!"

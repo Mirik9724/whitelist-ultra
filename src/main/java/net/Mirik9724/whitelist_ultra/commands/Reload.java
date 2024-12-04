@@ -1,5 +1,6 @@
 package net.Mirik9724.whitelist_ultra.commands;
 
+import net.Mirik9724.whitelist_ultra.Whitelist_ultra;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -16,7 +17,7 @@ public class Reload implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         plugin.reloadConfig();
-        sender.sendMessage("Плагин успешно перезагружен!");
+        sender.sendMessage(Whitelist_ultra.getTranslation("plugin.reload"));
         return true;
     }
 }
