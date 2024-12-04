@@ -6,11 +6,15 @@ Plugin for MC spigot
 
 ### whitelist-ultra.add - Add player for WL
 
-whitelist-ultra.remove - Remove player for WL
+### whitelist-ultra.remove - Remove player for WL
 
-whitelist-ultra.list - show Wl
+### whitelist-ultra.list - show Wl
 
-whitelist-ultra.reload - reload plugin
+### whitelist-ultra.reload - reload plugin
 
-whitelist-ultra.admin - All permission
+### whitelist-ultra.admin - All permission
 
+
+## Translations
+
+###In the file "whitelist ultra/messages.yml" you can customize your translations
