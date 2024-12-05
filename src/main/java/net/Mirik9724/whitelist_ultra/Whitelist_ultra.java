@@ -44,6 +44,8 @@ public final class Whitelist_ultra extends JavaPlugin {
         WhitelistUltraCommand commandExecutor = new WhitelistUltraCommand(this);
         getCommand("whitelist-ultra").setExecutor(commandExecutor);
 
+        loadTranslations();
+
         Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(this), this);
 
         Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Whitelist Ultra has loaded");
@@ -55,7 +57,9 @@ public final class Whitelist_ultra extends JavaPlugin {
 
         // Если файл не существует, копируем его из ресурсов плагина
         if (!translationsFile.exists()) {
+            getLogger().info("File messages.yml is not found. Trying to create from resources...");
             saveResource("messages.yml", false);
+            getLogger().info("File messages.yml is successfully created.");
         }
 
         // Загружаем содержимое файла в объект YamlConfiguration

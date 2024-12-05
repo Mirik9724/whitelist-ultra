@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'net.Mirik9724'
-version = '0.2.8'
+version = '0.2.8.2'
 
 repositories {
     mavenCentral()
