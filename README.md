@@ -17,4 +17,4 @@ Plugin for MC spigot
 
 ## Translations
 
-###In the file "whitelist ultra/messages.yml" you can customize your translations
+### In the file "whitelist ultra/messages.yml" you can customize your translations
