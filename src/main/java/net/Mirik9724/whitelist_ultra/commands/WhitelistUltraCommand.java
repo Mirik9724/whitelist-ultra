@@ -1,5 +1,6 @@
 package net.Mirik9724.whitelist_ultra.commands;
 
+import net.Mirik9724.whitelist_ultra.Whitelist_ultra;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -27,7 +28,7 @@ public class WhitelistUltraCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 0) {
-            sender.sendMessage("Пожалуйста, укажите подкоманду.");
+            sender.sendMessage(Whitelist_ultra.getTranslation("commands.error.subc"));
             return false;
         }
 
@@ -35,7 +36,7 @@ public class WhitelistUltraCommand implements CommandExecutor {
         if (subCommand != null) {
             return subCommand.onCommand(sender, command, label, args);
         } else {
-            sender.sendMessage("Неизвестная подкоманда: " + args[0]);
+            sender.sendMessage(Whitelist_ultra.getTranslation("commands.error.underknewcom") + args[0]);
             return false;
         }
     }

@@ -23,7 +23,7 @@ public class Add implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length < 2) {
-            sender.sendMessage(Whitelist_ultra.getTranslation("plugin.commands.usage") +" /whitelist-ultra add <player>");
+            sender.sendMessage(Whitelist_ultra.getTranslation("commands.usage") +" /whitelist-ultra add <player>");
             return false;
         }
 
@@ -63,9 +63,9 @@ public class Add implements CommandExecutor {
             if (!exists) {
                 arrayNode.add(playerName);
                 mapper.writeValue(file, arrayNode); // Записываем обновленный массив в файл
-                sender.sendMessage(Whitelist_ultra.getTranslation("plugin.commands.player") + playerName + Whitelist_ultra.getTranslation("plugin.commands.add.m1"));
+                sender.sendMessage(Whitelist_ultra.getTranslation("commands.player") + playerName + Whitelist_ultra.getTranslation("plugin.commands.add.m1"));
             } else {
-                sender.sendMessage(Whitelist_ultra.getTranslation("plugin.commands.player") + playerName + Whitelist_ultra.getTranslation("plugin.commands.add.m2"));
+                sender.sendMessage(Whitelist_ultra.getTranslation("commands.player") + playerName + Whitelist_ultra.getTranslation("plugin.commands.add.m2"));
             }
 
         } catch (IOException e) {

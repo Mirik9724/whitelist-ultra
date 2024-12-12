@@ -2,7 +2,10 @@ package net.Mirik9724.whitelist_ultra;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
@@ -13,8 +16,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayerJoinListener implements Listener {
 
+public class PlayerJoinListener implements Listener {
     private final JavaPlugin plugin;
 
     public PlayerJoinListener(JavaPlugin plugin) {
@@ -29,8 +32,14 @@ public class PlayerJoinListener implements Listener {
         plugin.getLogger().info("Checking whitelist for player: " + playerName);
 
         if (!allowedPlayers.stream().map(String::trim).toList().contains(playerName.trim())) {
-            event.disallow(PlayerLoginEvent.Result.KICK_WHITELIST, ChatColor.RED + "You are not on the whitelist.");
+            event.disallow(PlayerLoginEvent.Result.KICK_WHITELIST, ChatColor.RED + Whitelist_ultra.getTranslation("kick"));
         }
+
+        if (event.getPlayer().hasPermission("whitelist-ultra.admin")) {
+            CommandSender sender = event.getPlayer(); // Игрок, подключающийся к серверу
+            Whitelist_ultra.getInstance().checkForUpdates(sender);
+        }
+
     }
 
     private List<String> getAllowedPlayers() {

@@ -17,7 +17,7 @@ public class Reload implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         plugin.reloadConfig();
-        sender.sendMessage(Whitelist_ultra.getTranslation("plugin.reload"));
+        sender.sendMessage(Whitelist_ultra.getTranslation("reload"));
         return true;
     }
 }
