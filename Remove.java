@@ -23,7 +23,7 @@ public class Remove implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length < 2) {
-            sender.sendMessage(Whitelist_ultra.getTranslation("plugin.commands.usage") + " /whitelist-ultra remove <player>");
+            sender.sendMessage(Whitelist_ultra.getTranslation("commands.usage") + " /whitelist-ultra remove <player>");
             return false;
         }
 
@@ -53,9 +53,9 @@ public class Remove implements CommandExecutor {
                     if (found) {
                         // Записываем обновленный массив в файл
                         mapper.writeValue(file, newArrayNode);
-                        sender.sendMessage(Whitelist_ultra.getTranslation("plugin.commands.player") + playerName + Whitelist_ultra.getTranslation("plugin.commands.remove.m1"));
+                        sender.sendMessage(Whitelist_ultra.getTranslation("commands.player") + playerName + Whitelist_ultra.getTranslation("commands.remove.m1"));
                     } else {
-                        sender.sendMessage(Whitelist_ultra.getTranslation("plugin.commands.player") + playerName + Whitelist_ultra.getTranslation("plugin.commands.remove.m1"));
+                        sender.sendMessage(Whitelist_ultra.getTranslation("commands.player") + playerName + Whitelist_ultra.getTranslation("commands.remove.m1"));
                     }
                 } else {
                     sender.sendMessage("The file contains an incorrect format. Expecting an array.");
