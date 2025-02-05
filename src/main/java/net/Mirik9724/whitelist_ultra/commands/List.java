@@ -22,7 +22,7 @@ public class List implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         // Логика отображения списка игроков в вайтлисте
-        StringBuilder whitelistPlayers = new StringBuilder(Whitelist_ultra.getTranslation("plugin.commands.list"));
+        StringBuilder whitelistPlayers = new StringBuilder(Whitelist_ultra.getTranslation("commands.list"));
 
         try {
             ObjectMapper mapper = new ObjectMapper();

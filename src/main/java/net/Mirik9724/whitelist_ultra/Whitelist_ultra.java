@@ -1,18 +1,28 @@
 package net.Mirik9724.whitelist_ultra;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import net.Mirik9724.whitelist_ultra.commands.WhitelistUltraCommand;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public final class Whitelist_ultra extends JavaPlugin {
+    private static Whitelist_ultra instance;  // Статическая переменная для хранения экземпляра плагина
     private File translationsFile; // Объявляем переменную для файла переводов
     private static FileConfiguration translationsConfig;
+    public String VersionOfPlugin = this.getDescription().getVersion();
+    private static final String NewestVersionOfPlugin = "https://raw.githubusercontent.com/Mirik9724/whitelist-ultra/main/V.txt";
 
     @Override
     public void onEnable() {
@@ -45,26 +55,60 @@ public final class Whitelist_ultra extends JavaPlugin {
         getCommand("whitelist-ultra").setExecutor(commandExecutor);
 
         loadTranslations();
+        checkForUpdates(Bukkit.getConsoleSender());
 
         Bukkit.getPluginManager().registerEvents(new PlayerJoinListener(this), this);
 
         Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "Whitelist Ultra has loaded");
     }
 
+    public static Whitelist_ultra getInstance() {
+        return instance; // Предоставляем доступ к экземпляру
+    }
+
     public void loadTranslations() {
-        // Определяем путь к файлу переводов
         translationsFile = new File(getDataFolder(), "messages.yml");
 
-        // Если файл не существует, копируем его из ресурсов плагина
+        // Если файл отсутствует, копируем из ресурсов
         if (!translationsFile.exists()) {
             getLogger().info("File messages.yml is not found. Trying to create from resources...");
             saveResource("messages.yml", false);
             getLogger().info("File messages.yml is successfully created.");
         }
 
-        // Загружаем содержимое файла в объект YamlConfiguration
+        // Загружаем содержимое файла
         translationsConfig = YamlConfiguration.loadConfiguration(translationsFile);
+
+        // Загружаем эталонный файл из ресурсов
+        InputStream defaultStream = getResource("messages.yml");
+        if (defaultStream != null) {
+            YamlConfiguration defaultConfig = YamlConfiguration.loadConfiguration(new InputStreamReader(defaultStream));
+
+            // Добавляем только отсутствующие ключи
+            boolean updated = false;
+            for (String key : defaultConfig.getKeys(true)) {
+                if (!translationsConfig.contains(key)) { // Если ключ отсутствует
+                    translationsConfig.set(key, defaultConfig.getString(key));
+                    updated = true;
+                }
+            }
+
+            // Если файл был обновлен, сохраняем изменения
+            if (updated) {
+                try {
+                    translationsConfig.save(translationsFile);
+                    getLogger().info("Translations file was updated with new entries.");
+                } catch (IOException e) {
+                    getLogger().severe("Failed to save updated translations file: " + e.getMessage());
+                }
+            } else {
+                getLogger().info("Translations file is already up-to-date.");
+            }
+        } else {
+            getLogger().severe("Default translations file (messages.yml) is missing in plugin resources.");
+        }
     }
+
     public static String getTranslation(String path, Object... args) {
         String message = translationsConfig.getString(path, "Translation not found: " + path);
         if (message != null && args.length > 0) {
@@ -72,6 +116,36 @@ public final class Whitelist_ultra extends JavaPlugin {
         }
         return message;
     }
+
+    public void checkForUpdates(CommandSender sender) {
+        try {
+            // Получаем версию плагина с сайта
+            URL url = new URL(NewestVersionOfPlugin);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            StringBuilder response = new StringBuilder();
+            String inputLine;
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+
+            String latestVersion = response.toString().trim();
+
+            // Если версии не совпадают, выводим FU!!!
+            if (latestVersion.equals(VersionOfPlugin)) {
+                System.out.println(Whitelist_ultra.getTranslation("version.v_no_found"));
+            } else {
+                System.out.println(Whitelist_ultra.getTranslation("version.v_found") + "https://modrinth.com/plugin/whitelist-ultra/version/" + latestVersion);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+}
 
     @Override
     public void onDisable() {

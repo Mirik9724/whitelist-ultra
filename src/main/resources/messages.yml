@@ -1,15 +1,22 @@
-plugin:
-  error:
-    file_: "test"
-    file_does_not-exist: "File does not exist"
-  commands:
-    usage: "Usage:"
-    remove:
-      m1: " удален из вайтлиста."
-      m2: " не найден в вайтлисте."
-    add:
-      m1: " successfully added to whitelist."
-      m2: " already on the whitelist."
-    list: "Whitelist: "
-    player: "Игрок "
-  reload: "&aThe plugin has been successfully reloaded!"
+error:
+  file_: "test"
+  file_does_not-exist: "File does not exist"
+  underknewcom: "Unknown subcommand: "
+  subc: "Please specify the subcommand."
+commands:
+  usage: "Usage:"
+  remove:
+    m1: " was removed from the whitelist."
+    m2: " is not found in the whitelist."
+  add:
+    m1: " successfully added to whitelist."
+    m2: " already on the whitelist."
+  list: "Whitelist: "
+  player: "Player "
+reload: "The plugin has been successfully reloaded!"
+kick: "You are not on the whitelist."
+
+version:
+  v_no_connect: "New plugin versions failed."
+  v_no_found: "Update not found"
+  v_found: "Update found here is the latest version: "
