@@ -35,10 +35,6 @@ public class PlayerJoinListener implements Listener {
             event.disallow(PlayerLoginEvent.Result.KICK_WHITELIST, ChatColor.RED + Whitelist_ultra.getTranslation("kick"));
         }
 
-        if (event.getPlayer().hasPermission("whitelist-ultra.admin")) {
-            CommandSender sender = event.getPlayer(); // Игрок, подключающийся к серверу
-            Whitelist_ultra.getInstance().checkForUpdates(sender);
-        }
 
     }
 
