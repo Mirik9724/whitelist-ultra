@@ -22,7 +22,8 @@ public class WhitelistUltraCommand implements CommandExecutor {
         subCommands.put("add", new Add(plugin));
         subCommands.put("list", new List(plugin));
         subCommands.put("remove", new Remove(plugin));
-        subCommands.put("reload", new Reload(plugin)); // Передача плагина в команду reload
+        subCommands.put("reload", new Reload(plugin));
+        subCommands.put("check", new Check(plugin));
     }
 
     @Override

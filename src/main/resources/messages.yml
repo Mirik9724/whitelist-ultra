@@ -1,17 +1,31 @@
 error:
   file_: "test"
   file_does_not-exist: "File does not exist"
-  underknewcom: "Неизвестная подкоманда: "
-  subc: "Пожалуйста, укажите подкоманду."
+  underknewcom: "Unknown subcommand: "
+  subc: "Please specify the subcommand."
 commands:
   usage: "Usage:"
+
   remove:
     m1: " was removed from the whitelist."
     m2: " is not found in the whitelist."
+    kick: "You have been removed from the whitelist"
+
   add:
     m1: " successfully added to whitelist."
     m2: " already on the whitelist."
+
+  check:
+    found: " is in the whitelist."
+    not_found: " is not in the whitelist."
+
   list: "Whitelist: "
   player: "Player "
 reload: "The plugin has been successfully reloaded!"
 kick: "You are not on the whitelist."
+
+
+version:
+  v_no_connect: "New plugin versions failed."
+  v_no_found: "Update not found"
+  v_found: "Update found here is the latest version: "

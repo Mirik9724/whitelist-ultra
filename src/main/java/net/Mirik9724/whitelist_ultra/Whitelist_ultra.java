@@ -3,6 +3,9 @@ package net.Mirik9724.whitelist_ultra;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import net.Mirik9724.whitelist_ultra.commands.WhitelistUltraCommand;
+import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
@@ -13,6 +16,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
+import java.awt.*;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -21,7 +25,8 @@ public final class Whitelist_ultra extends JavaPlugin {
     private static Whitelist_ultra instance;  // Статическая переменная для хранения экземпляра плагина
     private File translationsFile; // Объявляем переменную для файла переводов
     private static FileConfiguration translationsConfig;
-    private static final String MODRINTH_API_URL = "https://api.modrinth.com/v2/project/whitelist-ultra/version";
+    public String VersionOfPlugin = this.getDescription().getVersion();
+    private static final String NewestVersionOfPlugin = "https://raw.githubusercontent.com/Mirik9724/whitelist-ultra/main/V.txt";
 
     @Override
     public void onEnable() {
@@ -108,62 +113,87 @@ public final class Whitelist_ultra extends JavaPlugin {
         }
     }
 
+    //public static String getTranslation(String path, Object... args) {
+    //    String message = translationsConfig.getString(path, "Translation not found: " + path);
+    //    if (message != null && args.length > 0) {
+    //        return String.format(message, args);
+    //    }
+    //    return message;
+    //}
+
     public static String getTranslation(String path, Object... args) {
         String message = translationsConfig.getString(path, "Translation not found: " + path);
+
         if (message != null && args.length > 0) {
-            return String.format(message, args);
+            message = String.format(message, args);
         }
-        return message;
+
+        // Поддержка цветных сообщений с кодами типа &c (красный), &6 (золотой)
+        message = ChatColor.translateAlternateColorCodes('&', message);
+
+        // Поддержка градиентов с помощью MiniMessage
+        // Например: "<gradient:red:yellow>Текст</gradient>"
+        Component component = MiniMessage.miniMessage().deserialize(message);
+
+        // Преобразуем обратно в строку, чтобы использовать в старых версиях
+        return LegacyComponentSerializer.legacySection().serialize(component);
     }
 
     public void checkForUpdates(CommandSender sender) {
-        Bukkit.getScheduler().runTaskAsynchronously(this, () -> {
-            try {
-                HttpURLConnection connection = (HttpURLConnection) new URL(MODRINTH_API_URL).openConnection();
-                connection.setRequestMethod("GET");
-                connection.setConnectTimeout(5000);
-                connection.setReadTimeout(5000);
+        try {
+            // Получаем версию плагина с сайта
+            URL url = new URL(NewestVersionOfPlugin);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
 
-                if (connection.getResponseCode() != 200) {
-                    getLogger().severe("Failed to check for updates: HTTP " + connection.getResponseCode());
+            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            StringBuilder response = new StringBuilder();
+            String inputLine;
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+
+            String latestVersion = response.toString().trim();
+
+            // Убираем буквы и сравниваем только числа
+            String latestNumeric = latestVersion.replaceAll("[^0-9.]", "");
+            String pluginNumeric = VersionOfPlugin.replaceAll("[^0-9.]", "");
+
+            String latestLetter = latestVersion.replaceAll("[^a-zA-Z]", "");
+            String pluginLetter = VersionOfPlugin.replaceAll("[^a-zA-Z]", "");
+
+            // Разбиваем версии по точкам и сравниваем числа
+            String[] latestParts = latestNumeric.split("\\.");
+            String[] pluginParts = pluginNumeric.split("\\.");
+            int maxLength = Math.max(latestParts.length, pluginParts.length);
+
+            for (int i = 0; i < maxLength; i++) {
+                int num1 = i < latestParts.length ? Integer.parseInt(latestParts[i]) : 0;
+                int num2 = i < pluginParts.length ? Integer.parseInt(pluginParts[i]) : 0;
+
+                if (num1 > num2) {
+                    System.out.println("FU!!!");
+                    System.out.println(Whitelist_ultra.getTranslation("version.v_found") + "https://modrinth.com/plugin/whitelist-ultra/version/" + latestVersion);
+                    return;
+                } else if (num1 < num2) {
+                    System.out.println(Whitelist_ultra.getTranslation("version.v_no_found"));
                     return;
                 }
-
-                InputStream inputStream = connection.getInputStream();
-                ObjectMapper mapper = new ObjectMapper();
-                JsonNode versions = mapper.readTree(inputStream);
-
-                if (versions.isArray() && versions.size() > 0) {
-                    JsonNode latestVersion = versions.get(0);
-                    String latestVersionNumber = latestVersion.get("version_number").asText();
-                    String downloadUrl = latestVersion.get("files").get(0).get("url").asText();
-
-                    String currentVersion = getDescription().getVersion();
-                    if (!currentVersion.equalsIgnoreCase(latestVersionNumber)) {
-                        sender.sendMessage(ChatColor.GREEN + "New version of Whitelist Ultra is available: " + latestVersionNumber);
-
-                        if (sender instanceof Player player) {
-                            TextComponent message = new TextComponent(ChatColor.YELLOW + "Download it here: " + downloadUrl);
-                            message.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, downloadUrl));
-                            player.spigot().sendMessage(message); // Для игрока
-                        } else {
-                            sender.sendMessage(ChatColor.YELLOW + "Download it here: " + downloadUrl); // Для консоли
-                        }
-
-                        getLogger().info("New version available: " + latestVersionNumber + ". Download it at " + downloadUrl);
-                    } else {
-                        sender.sendMessage(ChatColor.GREEN + "Whitelist Ultra is up to date.");
-                        getLogger().info("Whitelist Ultra is up to date.");
-                    }
-                } else {
-                    getLogger().info("No versions found on Modrinth.");
-                }
-
-                inputStream.close();
-            } catch (Exception e) {
-                getLogger().severe("Failed to check for updates: " + e.getMessage());
             }
-        });
+
+            // Если числа совпадают, сравниваем буквы (b > a)
+            if (latestLetter.compareTo(pluginLetter) > 0) {
+                System.out.println("FU!!!");
+                System.out.println(Whitelist_ultra.getTranslation("version.v_found") + "https://modrinth.com/plugin/whitelist-ultra/version/" + latestVersion);
+            } else {
+                System.out.println(Whitelist_ultra.getTranslation("version.v_no_found"));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 }
 
