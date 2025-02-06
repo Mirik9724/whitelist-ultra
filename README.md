@@ -1,5 +1,6 @@
 # whitelist-ultra
 Plugin for MC spigot
+Whitelist works with nicknames without uuid and case sensitive.
 
 
 ## Permission & Commands:
@@ -8,13 +9,11 @@ Plugin for MC spigot
 
 ### /wlu remove - Remove player for WL ```whitelist-ultra.remove```
 
-### /wlu remove whitelist-ultra.check - check if a player is on the list
+### /wlu check - check if a player is on the list ```whitelist-ultra.check```
 
 ### /wlu list - show Wl ```whitelist-ultra.list```
 
 ### /wlu reload - reload plugin ```whitelist-ultra.reload```
-
-
 
 ### whitelist-ultra.admin - All permission
 
