@@ -20,3 +20,5 @@ Whitelist works with nicknames without uuid and case sensitive.
 ## Translations
 
 ### In the file "whitelist ultra/messages.yml" you can customize your translations
+
+### The plugin supports &a and others from vanilla as well as [MiniMessange gradients](https://www.birdflop.com/resources/rgb/)
