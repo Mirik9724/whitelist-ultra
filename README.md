@@ -2,7 +2,9 @@
 Plugin for MC spigot
 
 
-## permission:
+## Permission & Commands:
+
+#### d 
 
 ### whitelist-ultra.add - Add player for WL
 
@@ -12,8 +14,9 @@ Plugin for MC spigot
 
 ### whitelist-ultra.reload - reload plugin
 
-### whitelist-ultra.admin - All permission
+### whitelist-ultra.check - check if a player is on the list
 
+### whitelist-ultra.admin - All permission
 
 ## Translations
 
