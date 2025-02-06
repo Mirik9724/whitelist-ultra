@@ -15,7 +15,7 @@ Whitelist works with nicknames without uuid and case sensitive.
 
 ### /wlu reload - reload plugin ```whitelist-ultra.reload```
 
-### whitelist-ultra.admin - All permission
+### ```whitelist-ultra.admin``` - All permission
 
 ## Translations
 
