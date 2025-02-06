@@ -3,6 +3,9 @@ package net.Mirik9724.whitelist_ultra;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import net.Mirik9724.whitelist_ultra.commands.WhitelistUltraCommand;
+import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
@@ -13,6 +16,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
+import java.awt.*;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -109,12 +113,30 @@ public final class Whitelist_ultra extends JavaPlugin {
         }
     }
 
+    //public static String getTranslation(String path, Object... args) {
+    //    String message = translationsConfig.getString(path, "Translation not found: " + path);
+    //    if (message != null && args.length > 0) {
+    //        return String.format(message, args);
+    //    }
+    //    return message;
+    //}
+
     public static String getTranslation(String path, Object... args) {
         String message = translationsConfig.getString(path, "Translation not found: " + path);
+
         if (message != null && args.length > 0) {
-            return String.format(message, args);
+            message = String.format(message, args);
         }
-        return message;
+
+        // Поддержка цветных сообщений с кодами типа &c (красный), &6 (золотой)
+        message = ChatColor.translateAlternateColorCodes('&', message);
+
+        // Поддержка градиентов с помощью MiniMessage
+        // Например: "<gradient:red:yellow>Текст</gradient>"
+        Component component = MiniMessage.miniMessage().deserialize(message);
+
+        // Преобразуем обратно в строку, чтобы использовать в старых версиях
+        return LegacyComponentSerializer.legacySection().serialize(component);
     }
 
     public void checkForUpdates(CommandSender sender) {
