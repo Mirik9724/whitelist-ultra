@@ -1,6 +1,6 @@
 # whitelist-ultra
 ### Plugin for MC Bukkit & Spigot(and forks) & Paper & Purpur & Folia
-Whitelist works with nicknames without uuid and case sensitive.
+### Whitelist works with nicknames without uuid and case sensitive.
 
 
 ## Permission & Commands:
