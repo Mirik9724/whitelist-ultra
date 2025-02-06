@@ -135,12 +135,40 @@ public final class Whitelist_ultra extends JavaPlugin {
 
             String latestVersion = response.toString().trim();
 
-            // Если версии не совпадают, выводим FU!!!
-            if (latestVersion.equals(VersionOfPlugin)) {
-                System.out.println(Whitelist_ultra.getTranslation("version.v_no_found"));
-            } else {
-                System.out.println(Whitelist_ultra.getTranslation("version.v_found") + "https://modrinth.com/plugin/whitelist-ultra/version/" + latestVersion);
+            // Убираем буквы и сравниваем только числа
+            String latestNumeric = latestVersion.replaceAll("[^0-9.]", "");
+            String pluginNumeric = VersionOfPlugin.replaceAll("[^0-9.]", "");
+
+            String latestLetter = latestVersion.replaceAll("[^a-zA-Z]", "");
+            String pluginLetter = VersionOfPlugin.replaceAll("[^a-zA-Z]", "");
+
+            // Разбиваем версии по точкам и сравниваем числа
+            String[] latestParts = latestNumeric.split("\\.");
+            String[] pluginParts = pluginNumeric.split("\\.");
+            int maxLength = Math.max(latestParts.length, pluginParts.length);
+
+            for (int i = 0; i < maxLength; i++) {
+                int num1 = i < latestParts.length ? Integer.parseInt(latestParts[i]) : 0;
+                int num2 = i < pluginParts.length ? Integer.parseInt(pluginParts[i]) : 0;
+
+                if (num1 > num2) {
+                    System.out.println("FU!!!");
+                    System.out.println(Whitelist_ultra.getTranslation("version.v_found") + "https://modrinth.com/plugin/whitelist-ultra/version/" + latestVersion);
+                    return;
+                } else if (num1 < num2) {
+                    System.out.println(Whitelist_ultra.getTranslation("version.v_no_found"));
+                    return;
+                }
             }
+
+            // Если числа совпадают, сравниваем буквы (b > a)
+            if (latestLetter.compareTo(pluginLetter) > 0) {
+                System.out.println("FU!!!");
+                System.out.println(Whitelist_ultra.getTranslation("version.v_found") + "https://modrinth.com/plugin/whitelist-ultra/version/" + latestVersion);
+            } else {
+                System.out.println(Whitelist_ultra.getTranslation("version.v_no_found"));
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }

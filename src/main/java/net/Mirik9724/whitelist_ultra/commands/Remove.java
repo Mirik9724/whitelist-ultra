@@ -3,10 +3,12 @@ package net.Mirik9724.whitelist_ultra.commands;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import net.Mirik9724.whitelist_ultra.Whitelist_ultra;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -56,6 +58,11 @@ public class Remove implements CommandExecutor {
                         sender.sendMessage(Whitelist_ultra.getTranslation("commands.player") + playerName + Whitelist_ultra.getTranslation("commands.remove.m1"));
                     } else {
                         sender.sendMessage(Whitelist_ultra.getTranslation("commands.player") + playerName + Whitelist_ultra.getTranslation("commands.remove.m1"));
+                    }
+                    // Проверяем, находится ли игрок на сервере
+                    Player player = Bukkit.getPlayerExact(playerName);
+                    if (player != null && player.isOnline()) {
+                        player.kickPlayer(Whitelist_ultra.getTranslation("commands.remove.kick"));
                     }
                 } else {
                     sender.sendMessage("The file contains an incorrect format. Expecting an array.");
