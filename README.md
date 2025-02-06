@@ -1,3 +1,4 @@
+![](https://raw.githubusercontent.com/Mirik9724/whitelist-ultra/refs/heads/main/src/main/resources/wlu.png)
 # whitelist-ultra
 ### Plugin for MC Bukkit & Spigot(and forks) & Paper & Purpur & Folia
 ### Whitelist works with nicknames without uuid and case sensitive.
