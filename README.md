@@ -6,14 +6,15 @@ Plugin for MC spigot
 
 ### /wlu add  - Add player for WL ```whitelist-ultra.add```
 
-### 
-whitelist-ultra.remove - Remove player for WL
+### /wlu remove - Remove player for WL ```whitelist-ultra.remove```
 
-### whitelist-ultra.list - show Wl
+### /wlu remove whitelist-ultra.check - check if a player is on the list
 
-### whitelist-ultra.reload - reload plugin
+### /wlu list - show Wl ```whitelist-ultra.list```
 
-### whitelist-ultra.check - check if a player is on the list
+### /wlu reload - reload plugin ```whitelist-ultra.reload```
+
+
 
 ### whitelist-ultra.admin - All permission
 
