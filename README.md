@@ -4,8 +4,7 @@ Plugin for MC spigot
 
 ## Permission & Commands:
 
-### /wlu add  - Add player for WL
-#### ```whitelist-ultra.add```
+### /wlu add  - Add player for WL ```whitelist-ultra.add```
 
 ### 
 whitelist-ultra.remove - Remove player for WL
