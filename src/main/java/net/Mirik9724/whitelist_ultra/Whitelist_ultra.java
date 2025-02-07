@@ -8,11 +8,9 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
-import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -56,9 +54,9 @@ public final class Whitelist_ultra extends JavaPlugin {
             }
         }
 
-        int pluginId = 24668;
-        Metrics metrics = new Metrics(this, pluginId);
-        getLogger().info("Metrics are enabled.");
+        //int pluginId = 24668;
+        //Metrics metrics = new Metrics(this, pluginId);
+        //getLogger().info("Metrics are enabled.");
 
 
         WhitelistUltraCommand commandExecutor = new WhitelistUltraCommand(this);
