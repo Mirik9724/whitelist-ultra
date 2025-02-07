@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'net.Mirik9724'
-version = '0.5.1'
+version = '0.5.2'
 
 repositories {
     mavenCentral()
@@ -20,6 +20,8 @@ repositories {
 
 dependencies {
     compileOnly("org.spigotmc:spigot-api:1.18.2-R0.1-SNAPSHOT")
+
+    implementation 'org.bstats:bstats-bukkit:3.0.0'
 
     // Adventure API (Core + MiniMessage)
     implementation 'net.kyori:adventure-api:4.14.0'

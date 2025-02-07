@@ -8,6 +8,7 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.TextComponent;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -54,6 +55,11 @@ public final class Whitelist_ultra extends JavaPlugin {
                 e.printStackTrace();
             }
         }
+
+        int pluginId = 24668;
+        Metrics metrics = new Metrics(this, pluginId);
+        getLogger().info("Metrics are enabled.");
+
 
         WhitelistUltraCommand commandExecutor = new WhitelistUltraCommand(this);
         getCommand("whitelist-ultra").setExecutor(commandExecutor);
@@ -174,7 +180,6 @@ public final class Whitelist_ultra extends JavaPlugin {
                 int num2 = i < pluginParts.length ? Integer.parseInt(pluginParts[i]) : 0;
 
                 if (num1 > num2) {
-                    System.out.println("FU!!!");
                     System.out.println(Whitelist_ultra.getTranslation("version.v_found") + "https://modrinth.com/plugin/whitelist-ultra/version/" + latestVersion);
                     return;
                 } else if (num1 < num2) {
@@ -185,7 +190,6 @@ public final class Whitelist_ultra extends JavaPlugin {
 
             // Если числа совпадают, сравниваем буквы (b > a)
             if (latestLetter.compareTo(pluginLetter) > 0) {
-                System.out.println("FU!!!");
                 System.out.println(Whitelist_ultra.getTranslation("version.v_found") + "https://modrinth.com/plugin/whitelist-ultra/version/" + latestVersion);
             } else {
                 System.out.println(Whitelist_ultra.getTranslation("version.v_no_found"));
