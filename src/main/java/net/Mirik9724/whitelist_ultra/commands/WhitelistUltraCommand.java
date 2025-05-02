@@ -1,0 +1,44 @@
+package net.Mirik9724.whitelist_ultra.commands;
+
+import net.Mirik9724.whitelist_ultra.Whitelist_ultra;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.HashMap;
+import java.util.Map;
+
+
+public class WhitelistUltraCommand implements CommandExecutor {
+
+    private final JavaPlugin plugin; // Поле для хранения экземпляра плагина
+    private final Map<String, CommandExecutor> subCommands = new HashMap<>();
+
+    // Конструктор, который принимает экземпляр плагина
+    public WhitelistUltraCommand(JavaPlugin plugin) {
+        this.plugin = plugin; // Инициализация поля
+        // Регистрируем подкоманды
+        subCommands.put("add", new Add(plugin));
+        subCommands.put("list", new List(plugin));
+        subCommands.put("remove", new Remove(plugin));
+        subCommands.put("reload", new Reload(plugin));
+        subCommands.put("check", new Check(plugin));
+    }
+
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (args.length == 0) {
+            sender.sendMessage(Whitelist_ultra.getTranslation("commands.error.subc"));
+            return false;
+        }
+
+        CommandExecutor subCommand = subCommands.get(args[0].toLowerCase());
+        if (subCommand != null) {
+            return subCommand.onCommand(sender, command, label, args);
+        } else {
+            sender.sendMessage(Whitelist_ultra.getTranslation("commands.error.underknewcom") + args[0]);
+            return false;
+        }
+    }
+}

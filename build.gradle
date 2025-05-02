@@ -1,0 +1,74 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.1.2' // Плагин для тенизации JAR-файла
+}
+
+group = 'net.Mirik9724'
+version = '0.5.5'
+
+repositories {
+    mavenCentral()
+    maven {
+        name = "spigotmc-repo"
+        url = "https://hub.spigotmc.org/nexus/content/repositories/snapshots/"
+    }
+    maven {
+        name = "sonatype"
+        url = "https://oss.sonatype.org/content/groups/public/"
+    }
+}
+
+dependencies {
+    compileOnly("org.spigotmc:spigot-api:1.18.2-R0.1-SNAPSHOT")
+
+    //implementation 'org.bstats:bstats-bukkit:2.2.1'
+
+    // Adventure API (Core + MiniMessage)
+    implementation 'net.kyori:adventure-api:4.14.0'
+    implementation 'net.kyori:adventure-platform-bukkit:4.3.0'
+    implementation 'net.kyori:adventure-text-serializer-legacy:4.14.0'
+    implementation 'net.kyori:adventure-text-serializer-gson:4.14.0'
+    implementation 'net.kyori:adventure-text-minimessage:4.14.0'
+
+    // Зависимости для работы с Jackson (для работы с JSON)
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.14.1'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.1'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.14.1'
+}
+
+def targetJavaVersion = 17
+java {
+    def javaVersion = JavaVersion.toVersion(targetJavaVersion)
+    sourceCompatibility = javaVersion
+    targetCompatibility = javaVersion
+    if (JavaVersion.current() < javaVersion) {
+        toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+
+    if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
+        options.release.set(targetJavaVersion)
+    }
+}
+
+processResources {
+    def props = [version: version]
+    inputs.properties props
+    filteringCharset 'UTF-8'
+    filesMatching('plugin.yml') {
+        expand props
+    }
+}
+
+// Настройка теневого JAR-файла для включения зависимостей
+shadowJar {
+    archiveClassifier.set('') // Убираем "shadow" в названии JAR-файла
+}
+
+// Убедитесь, что билд включает сборку теневого JAR
+tasks.build {
+    dependsOn shadowJar
+}
