@@ -1,6 +1,6 @@
 name: whitelist_ultra
-version: '0.5.5'
-main: net.Mirik9724.whitelist_ultra.Whitelist_ultra
+version: '0.7-b23'
+main: net.Mirik9724.whitelist_ultra.WLU
 api-version: '1.18'
 description: Whitelist works with nicknames without uuid and case sensitive.
 
@@ -20,17 +20,28 @@ commands:
         description: Remove player to WL
         permission: whitelist-ultra.remove
         permission-messange: You don not have permission for this command
+        aliases:
+          - delete
+          - del
+          - rem
+          - d
       list:
         description: Show WL
         permission: whitelist-ultra.list
         permission-messange: You don not have permission for this command
+        aliases:
+          - l
       reload:
         description: Reload plugin
         permission: whitelist-ultra.reload
         permission-messange: You don not have permission for this command
+        aliases:
+          - rel
       check:
         description: Reload plugin
         permission: whitelist-ultra.check
         permission-messange: You don not have permission for this command
+        aliases:
+          - ch
 
 folia-supported: true

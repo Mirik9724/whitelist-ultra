@@ -1,10 +1,10 @@
 plugins {
-    id 'java'
     id 'com.github.johnrengelman.shadow' version '7.1.2' // Плагин для тенизации JAR-файла
+    id 'org.jetbrains.kotlin.jvm' version '2.1.0' // Плагин для Kotlin
 }
 
 group = 'net.Mirik9724'
-version = '0.5.5'
+version = '0.7-b23'
 
 repositories {
     mavenCentral()
@@ -16,12 +16,24 @@ repositories {
         name = "sonatype"
         url = "https://oss.sonatype.org/content/groups/public/"
     }
+    maven { url = uri("https://repo1.maven.org/maven2/") }
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+    maven {
+        url 'https://repo.papermc.io/repository/maven-releases/'
+    }
+    maven { url = uri("https://repo.papermc.io/repository/maven-snapshots")}
 }
 
 dependencies {
     compileOnly("org.spigotmc:spigot-api:1.18.2-R0.1-SNAPSHOT")
+    compileOnly 'net.md-5:bungeecord-api:1.19-R0.1-SNAPSHOT'
+    compileOnly("com.velocitypowered:velocity-api:3.4.0-SNAPSHOT")
 
-    //implementation 'org.bstats:bstats-bukkit:2.2.1'
+    // https://mvnrepository.com/artifact/org.bstats/bstats-base
+//    implementation("org.bstats:bstats-base:3.0.2")
+
+    // Для работы с Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 
     // Adventure API (Core + MiniMessage)
     implementation 'net.kyori:adventure-api:4.14.0'
@@ -66,6 +78,7 @@ processResources {
 // Настройка теневого JAR-файла для включения зависимостей
 shadowJar {
     archiveClassifier.set('') // Убираем "shadow" в названии JAR-файла
+//    relocate("org.bstats", "net.Mirik9724.whitelist_ultra.bstats") // важно для защиты от конфликтов
 }
 
 // Убедитесь, что билд включает сборку теневого JAR
