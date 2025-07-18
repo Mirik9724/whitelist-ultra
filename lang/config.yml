@@ -1,0 +1,67 @@
+# En - Here you can download ready-made translations of the config into your language (if it is translated)
+# Ru - Здесь вы можете скачать готовые переводы конфига на ваш язык(если он переведён)
+# Ua - Тут ви можете завантажити готові переклади конфігу на вашу мову (якщо вона перекладена)
+# Ch(Simple) - 您可以在此处下载现成的配置翻译版本（如果已翻译）
+# Fr - Ici, vous pouvez télécharger des traductions prêtes à l'emploi de la configuration dans votre langue (si elle est traduite)
+# La - Hic potes download praeparata configurationis translationes in linguam tuam(si translatum est)
+# De - Hier können Sie fertige Übersetzungen der Konfiguration in Ihre Sprache(falls verfügbar)
+# https://github.com/Mirik9724/whitelist-ultra/blob/main/lang
+
+# Global placeholders
+# @nick - player`s nickname(you cann`t use it everywhere)
+#
+# Here you can add your placeholders
+placeholders:
+  "@fu": "Fu!!!"
+  "@custom": "CustomValue"
+  "@test": "Test!"
+
+error:
+  file_: "The test messenge"
+  file_does_not-exist: "File does not exist."
+  underknewcom: "Unknown command: @undsubcom"
+  subc: "Please specify the subcommand."
+commands:
+  usage: "Usage: " # +usage for command
+  change:
+    old_not_found: "The old nickname was not found in the list."
+    duplicate: "The new nickname already exists in the list."
+    success: "Nickname changed successfully."
+
+  remove:
+    m1: "Player @nick was removed from the whitelist."
+    m2: "Player @nick is not found in the whitelist."
+    kick: "You have been removed from the whitelist"
+
+  add:
+    m1: "Player @nick successfully added to whitelist."
+    m2: "Player @nick already on the whitelist."
+
+  check:
+    found: "Player @nick is in the whitelist."
+    not_found: " Player @nick is not in the whitelist."
+
+  list: "Whitelist: " # + list of player in WLU
+  player: "Player @nick"
+reload: "The plugin has been successfully reloaded!"
+kick: "You are not on the whitelist."
+
+version:
+  v_no_connect: "New plugin versions failed."
+  v_no_found: "Update not found."
+  v_found: "Update found here is the latest version: @new_v"
+
+# Use BStats metrics (Please do not disable it so that I have an idea about the plugin users (anonymous info))
+use-metric: True
+
+# For dev(me):
+debag: False #Now it no work
+# import net.Mirik9724.whitelist_ultra.Sp.WLU.nick
+# WLU.nick
+#
+# plugin.logger.warning(")
+# plugin.logger.info("")
+# plugin.logger.fatal("")
+# WLU.instance.logger.info("")
+#
+# println - DELITE

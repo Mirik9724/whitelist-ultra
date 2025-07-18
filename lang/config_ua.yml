@@ -1,0 +1,67 @@
+# En - Тут ви можете завантажити готові переклади of the config into your language (if it is translated)
+# Ru - Здесь вы можете скачать готовые переводы конфига на ваш язык(если он переведён)
+# Ua - Тут ви можете завантажити готові переклади конфігу на вашу мову (якщо вона перекладена)
+# Ch(Simple) - 您可以在此处下载现成的配置翻译版本（如果已翻译）
+# Fr - Ici, vous pouvez télécharger des traductions prêtes à l'emploi de la configuration dans votre langue (si elle est traduite)
+# La - Hic potes download praeparata configurationis translationes in linguam tuam(si translatum est)
+# De - Hier können Sie fertige Übersetzungen der Konfiguration in Ihre Sprache(falls verfügbar)
+# https://github.com/Mirik9724/whitelist-ultra/blob/main/lang
+
+# Глобальні плейсхолдери
+# @nick - нікнейм гравця(you cann`t use it everywhere)
+#
+# Тут ви можете додати свої плейсхолдери
+placeholders:
+  "@fu": "Fu!!!"
+  "@custom": "CustomValue"
+  "@test": "Test!"
+
+error:
+  file_: "Тестове повідомлення"
+  file_does_not-exist: "Файл не існує."
+  underknewcom: "Невідома команда: @undsubcom"
+  subc: "Будь ласка, вкажіть підкоманду."
+commands:
+  usage: "Використання: " # +usage for command
+  change:
+    old_not_found: "Старий нік не знайдено у списку."
+    duplicate: "Новий нік уже є у списку."
+    success: "Нік успішно змінено."
+
+  remove:
+    m1: "Гравця @nick видалено зі списку дозволених."
+    m2: "Гравця @nick не знайдено у білому списку."
+    kick: "Вас видалено зі списку дозволених"
+
+  add:
+    m1: "Гравця @nick успішно додано до білого списку."
+    m2: "Гравець @nick вже у білому списку."
+
+  check:
+    found: "Гравець @nick у білому списку."
+    not_found: " Гравця @nick немає у білому списку."
+
+  list: "Білий список: " # + list of player in WLU
+  player: "Гравець @nick"
+reload: "Плагін успішно перезавантажено!"
+kick: "Вас немає у білому списку."
+
+version:
+  v_no_connect: "Не вдалося отримати нову версію плагіна."
+  v_no_found: "Оновлення не знайдено."
+  v_found: "Оновлення знайдено, ось остання версія: @new_v"
+
+# Use BStats metrics (Please do not disable it so that I have an idea about the plugin users (anonymous info))
+use-metric: True
+
+# For dev(me):
+debag: False #Now it no work
+# import net.Mirik9724.whitelist_ultra.Sp.WLU.nick
+# WLU.nick
+#
+# plugin.logger.warning(")
+# plugin.logger.info("")
+# plugin.logger.fatal("")
+# WLU.instance.logger.info("")
+#
+# println - DELITE
