@@ -1,0 +1,29 @@
+name: whitelist_ultra
+version: '0.8-shap'
+main: net.Mirik9724.whitelist_ultra.Bu.WLUBu
+description: Whitelist works with nicknames without UUID and case sensitive.
+author: Mirik9724
+commands:
+  whitelist-ultra:
+    aliases: [wlu]
+    permission: whitelist-ultra.admin
+    description: Whitelist management command
+permissions:
+  whitelist-ultra.admin:
+    description: Access to all whitelist-ultra commands
+    default: op
+  whitelist-ultra.add:
+    description: Allows adding players to whitelist
+    default: op
+  whitelist-ultra.remove:
+    description: Allows removing players from whitelist
+    default: op
+  whitelist-ultra.list:
+    description: Allows listing players in whitelist
+    default: op
+  whitelist-ultra.reload:
+    description: Allows reloading the whitelist config
+    default: op
+  whitelist-ultra.check:
+    description: Allows checking whitelist status
+    default: op

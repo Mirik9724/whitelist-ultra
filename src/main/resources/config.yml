@@ -12,7 +12,7 @@
 #
 # Here you can add your placeholders
 placeholders:
-  "@fu": "fu"
+  "@fu": "Fu!!!"
   "@custom": "CustomValue"
   "@test": "Test!"
 
@@ -23,6 +23,10 @@ error:
   subc: "Please specify the subcommand."
 commands:
   usage: "Usage: " # +usage for command
+  change:
+    old_not_found: "The old nickname was not found in the list."
+    duplicate: "The new nickname already exists in the list."
+    success: "Nickname changed successfully."
 
   remove:
     m1: "Player @nick was removed from the whitelist."
@@ -50,17 +54,9 @@ version:
 # Use BStats metrics (Please do not disable it so that I have an idea about the plugin users (anonymous info))
 use-metric: True
 
-# If you use your own custom server core, please indicate whether it is closer to SPIGOT or BUNGEECORD or VELOCITY
-# Search for available classes in the classpath:
-# SPIGOT - org.bukkit.Bukkit
-# BUNGEECORD - net.md_5.bungee.api
-# VELOCITY - com.velocitypowered.api
-platform-custom: SPIGOT
-
 # For dev(me):
 debag: False #Now it no work
-# .replace("@test", "Test!")
-# import net.Mirik9724.whitelist_ultra.WLU.nick
+# import net.Mirik9724.whitelist_ultra.Sp.WLU.nick
 # WLU.nick
 #
 # plugin.logger.warning(")

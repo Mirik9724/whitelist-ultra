@@ -5,13 +5,18 @@
 
 ## Permissions & Commands:
 
-### **/wlu add** - Add a player to the whitelist
+### **/wlu add <player>** - Add a player to the whitelist
 **Permission**: `whitelist-ultra.add`
 
-### **/wlu remove** - Remove a player from the whitelist
+### **/wlu remove <player>** - Remove a player from the whitelist
+### **/wlu del <player>** - Remove a player from the whitelist
+### **/wlu delite <player>** - Remove a player from the whitelist
 **Permission**: `whitelist-ultra.remove`
 
-### **/wlu check** - Check if a player is on the whitelist
+### **/wlu change <old> <new>** - Check if a player is on the whitelist
+**Permission**: `whitelist-ultra.check`
+
+### **/wlu check <player>** - Check if a player is on the whitelist
 **Permission**: `whitelist-ultra.check`
 
 ### **/wlu list** - Display the whitelist

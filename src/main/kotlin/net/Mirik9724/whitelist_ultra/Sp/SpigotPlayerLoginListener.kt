@@ -1,9 +1,8 @@
-package net.Mirik9724.whitelist_ultra.events
+package net.Mirik9724.whitelist_ultra.Sp
 
-import com.fasterxml.jackson.databind.JsonNode
-import com.fasterxml.jackson.databind.ObjectMapper
-import net.Mirik9724.whitelist_ultra.WLU
-import net.Mirik9724.whitelist_ultra.WLU.Companion.whitelist_f
+import net.Mirik9724.whitelist_ultra.getAllowedPlayers
+import net.Mirik9724.whitelist_ultra.WLUCore
+import net.Mirik9724.whitelist_ultra.WLUCore.whitelist_f
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerLoginEvent
@@ -14,12 +13,12 @@ class SpigotPlayerLoginListener(private val plugin: JavaPlugin) : Listener {
     @EventHandler
     fun onPlayerLoginSp(event: PlayerLoginEvent) {
         val playerName = event.player.name
-        val allowedPlayers = getAllowedPlayers(plugin)
+        val allowedPlayers = getAllowedPlayers(File(plugin.dataFolder, whitelist_f))
 
         plugin.logger.info("Checking whitelist for player: $playerName")
 
         if (!allowedPlayers.map { it.trim() }.contains(playerName.trim())) {
-            val kickMessage = WLU.instance.gT("kick")
+            val kickMessage = WLUCore.gT("kick")
             event.disallow(PlayerLoginEvent.Result.KICK_WHITELIST, kickMessage)
         }
     }

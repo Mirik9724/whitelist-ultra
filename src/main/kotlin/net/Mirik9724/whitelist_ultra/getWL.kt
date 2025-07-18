@@ -1,15 +1,14 @@
-package net.Mirik9724.whitelist_ultra.events
+package net.Mirik9724.whitelist_ultra
 
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
-import net.Mirik9724.whitelist_ultra.WLU.Companion.whitelist_f
-import org.bukkit.plugin.java.JavaPlugin
+import net.Mirik9724.whitelist_ultra.WLUCore.logger
 import java.io.File
+import java.util.logging.Logger
 
-fun getAllowedPlayers(plugin: JavaPlugin): List<String> {
-    val file = File(plugin.dataFolder, whitelist_f)
+fun getAllowedPlayers(file: File): List<String> {
     if (!file.exists()) {
-        plugin.logger.warning("Whitelist file not found, returning an empty list.")
+        logger.warn("Whitelist file not found, returning an empty list.")
         return emptyList()
     }
 
@@ -19,11 +18,11 @@ fun getAllowedPlayers(plugin: JavaPlugin): List<String> {
         if (rootNode.isArray) {
             rootNode.map { it.asText().trim() }.filter { it.isNotEmpty() }
         } else {
-            plugin.logger.warning("Invalid format in whitelist file. Expected an array.")
+            logger.warn("Invalid format in whitelist file. Expected an array.")
             emptyList()
         }
     } catch (e: Exception) {
-        e.printStackTrace()
+        logger.error("Error reading whitelist file: ${e.message}")
         emptyList()
     }
 }

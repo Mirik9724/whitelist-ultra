@@ -1,6 +1,6 @@
 name: whitelist_ultra
-version: '0.7-b23'
-main: net.Mirik9724.whitelist_ultra.WLU
+version: '0.8'
+main: net.Mirik9724.whitelist_ultra.Sp.WLUSp
 api-version: '1.18'
 description: Whitelist works with nicknames without uuid and case sensitive.
 
