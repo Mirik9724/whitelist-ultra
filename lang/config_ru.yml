@@ -16,12 +16,15 @@ placeholders:
   "@custom": "ПользовательскоеЗначение"
   "@test": "Тест!"
 
+check_updates: "True"
+
 error:
   file_: "Тестовое сообщение"
   file_does_not-exist: "Файл не существует."
   underknewcom: "Неизвестная команда: @undsubcom"
   subc: "Пожалуйста, укажите подкоманду."
 commands:
+  subc: "Пожалуйста, укажите подкоманду"
   usage: "Использование: " # +использование для команды
   change:
     old_not_found: "Старый ник не найден в списке."

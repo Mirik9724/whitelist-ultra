@@ -8,21 +8,26 @@
 # https://github.com/Mirik9724/whitelist-ultra/blob/main/lang
 
 # Globale Platzhalter
-# @nick - Spielername(you cann`t use it everywhere)
+# @nick - Spielername (kann nicht überall verwendet werden)
 #
-# Hier können Sie Ihre eigenen Platzhalter hinzufügen
+# Hier können Sie eigene Platzhalter hinzufügen
 placeholders:
   "@fu": "Fu!!!"
-  "@custom": "CustomValue"
+  "@custom": "BenutzerdefinierterWert"
   "@test": "Test!"
+
+check_updates: "True"
 
 error:
   file_: "Testnachricht"
   file_does_not-exist: "Datei existiert nicht."
   underknewcom: "Unbekannter Befehl: @undsubcom"
   subc: "Bitte geben Sie den Unterbefehl an."
+
 commands:
-  usage: "Verwendung: " # +usage for command
+  subc: "Bitte geben Sie einen Unterbefehl ein"
+  usage: "Verwendung: " # + Verwendung der Befehl
+
   change:
     old_not_found: "Der alte Spitzname wurde in der Liste nicht gefunden."
     duplicate: "Der neue Spitzname ist bereits in der Liste vorhanden."
@@ -30,8 +35,8 @@ commands:
 
   remove:
     m1: "Spieler @nick wurde von der Whitelist entfernt."
-    m2: "Spieler @nick ist nicht in der Whitelist."
-    kick: "Sie wurden von der Whitelist entfernt"
+    m2: "Spieler @nick ist nicht auf der Whitelist."
+    kick: "Sie wurden von der Whitelist entfernt."
 
   add:
     m1: "Spieler @nick wurde erfolgreich zur Whitelist hinzugefügt."
@@ -39,29 +44,31 @@ commands:
 
   check:
     found: "Spieler @nick ist auf der Whitelist."
-    not_found: " Spieler @nick ist nicht auf der Whitelist."
+    not_found: "Spieler @nick ist nicht auf der Whitelist."
 
-  list: "Whitelist: " # + list of player in WLU
+  list: "Whitelist: " # + Liste der Spieler in WLU
   player: "Spieler @nick"
+
 reload: "Das Plugin wurde erfolgreich neu geladen!"
 kick: "Sie stehen nicht auf der Whitelist."
 
 version:
-  v_no_connect: "Neue Plugin-Versionen fehlgeschlagen."
-  v_no_found: "Update nicht gefunden."
-  v_found: "Update gefunden, hier ist die neueste Version: @new_v"
+  v_no_connect: "Es konnte keine neue Version des Plugins abgerufen werden."
+  v_no_found: "Kein Update gefunden."
+  v_found: "Update gefunden. Neueste Version: @new_v"
 
-# Use BStats metrics (Please do not disable it so that I have an idea about the plugin users (anonymous info))
+# BStats-Metriken verwenden
+# (Bitte nicht deaktivieren, damit ich die Nutzung des Plugins verfolgen kann — anonym)
 use-metric: True
 
-# For dev(me):
-debag: False #Now it no work
+# Für Entwickler (me):
+debag: False # funktioniert derzeit nicht
 # import net.Mirik9724.whitelist_ultra.Sp.WLU.nick
 # WLU.nick
 #
-# plugin.logger.warning(")
+# plugin.logger.warning("")
 # plugin.logger.info("")
 # plugin.logger.fatal("")
 # WLU.instance.logger.info("")
 #
-# println - DELITE
+# println - LÖSCHEN

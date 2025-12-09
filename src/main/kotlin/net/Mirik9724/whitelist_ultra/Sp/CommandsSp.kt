@@ -15,7 +15,7 @@ import org.bukkit.plugin.java.JavaPlugin
 class AddBukkit(private val plugin: JavaPlugin) : CommandExecutor {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<String>): Boolean {
         if (args.size < 2) {
-            sender.sendMessage(WLUCore.gT("commands.usage") + " /whitelist-ultra add <player>")
+            sender.sendMessage(WLUCore.gT("commands.usage").toString() + " /whitelist-ultra add <player>")
             return false
         }
 
@@ -30,7 +30,7 @@ class AddBukkit(private val plugin: JavaPlugin) : CommandExecutor {
 class ChangeBukkit(private val plugin: JavaPlugin) : CommandExecutor {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<String>): Boolean {
         if (args.size < 3) {
-            sender.sendMessage(WLUCore.gT("commands.usage") + " /whitelist-ultra change <old> <new>")
+            sender.sendMessage(WLUCore.gT("commands.usage").toString() + " /whitelist-ultra change <old> <new>")
             return false
         }
 
@@ -47,7 +47,7 @@ class ChangeBukkit(private val plugin: JavaPlugin) : CommandExecutor {
 class CheckBukkit(private val plugin: JavaPlugin) : CommandExecutor {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<String>): Boolean {
         if (args.size < 2) {
-            sender.sendMessage(WLUCore.gT("commands.usage") + " /whitelist-ultra check <player>")
+            sender.sendMessage(WLUCore.gT("commands.usage").toString() + " /whitelist-ultra check <player>")
             return false
         }
 
@@ -72,7 +72,7 @@ class RemoveBukkit(private val plugin: JavaPlugin) : CommandExecutor {
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<String>): Boolean {
         if (args.size < 2) {
-            sender.sendMessage(WLUCore.gT("commands.usage") + " /whitelist-ultra remove <player>")
+            sender.sendMessage(WLUCore.gT("commands.usage").toString() + " /whitelist-ultra remove <player>")
             return false
         }
 
@@ -81,14 +81,14 @@ class RemoveBukkit(private val plugin: JavaPlugin) : CommandExecutor {
         val result = RemoveCommand.removeFromWhitelist(nick)
 
         if (result) {
-            sender.sendMessage(WLUCore.gT("commands.remove.m1"))
+            sender.sendMessage(WLUCore.gT("commands.remove.m1").toString())
             Bukkit.getPlayerExact(nick)?.let {
                 if (it.isOnline) {
-                    it.kickPlayer(WLUCore.gT("commands.remove.kick"))
+                    it.kickPlayer(WLUCore.gT("commands.remove.kick").toString())
                 }
             }
         } else {
-            sender.sendMessage(WLUCore.gT("commands.remove.m1")) // same message for "not found"
+            sender.sendMessage(WLUCore.gT("commands.remove.m1").toString()) // same message for "not found"
         }
 
         return true

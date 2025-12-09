@@ -8,60 +8,67 @@
 # https://github.com/Mirik9724/whitelist-ultra/blob/main/lang
 
 # Глобальні плейсхолдери
-# @nick - нікнейм гравця(you cann`t use it everywhere)
+# @nick - нікнейм гравця (можна використовувати не всюди)
 #
-# Тут ви можете додати свої плейсхолдери
+# Тут ви можете додати власні плейсхолдери
 placeholders:
   "@fu": "Fu!!!"
-  "@custom": "CustomValue"
-  "@test": "Test!"
+  "@custom": "Користувацьке значення"
+  "@test": "Тест!"
+
+check_updates: "True"
 
 error:
   file_: "Тестове повідомлення"
   file_does_not-exist: "Файл не існує."
   underknewcom: "Невідома команда: @undsubcom"
   subc: "Будь ласка, вкажіть підкоманду."
+
 commands:
-  usage: "Використання: " # +usage for command
+  subc: "Будь ласка, вкажіть підкоманду"
+  usage: "Використання: " # + використання команди
+
   change:
     old_not_found: "Старий нік не знайдено у списку."
     duplicate: "Новий нік уже є у списку."
     success: "Нік успішно змінено."
 
   remove:
-    m1: "Гравця @nick видалено зі списку дозволених."
-    m2: "Гравця @nick не знайдено у білому списку."
-    kick: "Вас видалено зі списку дозволених"
+    m1: "Гравця @nick видалено з білого списку."
+    m2: "Гравця @nick немає у білому списку."
+    kick: "Вас видалено з білого списку."
 
   add:
     m1: "Гравця @nick успішно додано до білого списку."
-    m2: "Гравець @nick вже у білому списку."
+    m2: "Гравець @nick уже є у білому списку."
 
   check:
-    found: "Гравець @nick у білому списку."
-    not_found: " Гравця @nick немає у білому списку."
+    found: "Гравець @nick є у білому списку."
+    not_found: "Гравця @nick немає у білому списку."
 
-  list: "Білий список: " # + list of player in WLU
+  list: "Білий список: " # + список гравців у WLU
   player: "Гравець @nick"
+
 reload: "Плагін успішно перезавантажено!"
 kick: "Вас немає у білому списку."
 
 version:
   v_no_connect: "Не вдалося отримати нову версію плагіна."
-  v_no_found: "Оновлення не знайдено."
-  v_found: "Оновлення знайдено, ось остання версія: @new_v"
+  v_no_found: "Оновлень не знайдено."
+  v_found: "Знайдено оновлення. Остання версія: @new_v"
 
-# Use BStats metrics (Please do not disable it so that I have an idea about the plugin users (anonymous info))
+# Використовувати BStats-метрики
+# (Будь ласка, не вимикайте, щоб я міг бачити статистику використання плагіна — анонімно)
 use-metric: True
 
-# For dev(me):
-debag: False #Now it no work
+# Для розробника (me):
+debag: False # наразі не працює
 # import net.Mirik9724.whitelist_ultra.Sp.WLU.nick
 # WLU.nick
 #
-# plugin.logger.warning(")
+# plugin.logger.warning("")
 # plugin.logger.info("")
 # plugin.logger.fatal("")
 # WLU.instance.logger.info("")
 #
-# println - DELITE
+# println - ВИДАЛИТИ

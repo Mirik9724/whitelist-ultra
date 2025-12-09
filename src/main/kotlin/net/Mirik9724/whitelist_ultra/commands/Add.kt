@@ -24,11 +24,11 @@ object AddCommand {
         }
 
         if (arrayNode.any { it.asText() == nick }) {
-            return gT("commands.add.m2")
+            return gT("commands.add.m2").toString()
         }
 
         arrayNode.add(nick)
         mapper.writeValue(dirWL, arrayNode)
-        return gT("commands.add.m1")
+        return gT("commands.add.m1").toString()
     }
 }

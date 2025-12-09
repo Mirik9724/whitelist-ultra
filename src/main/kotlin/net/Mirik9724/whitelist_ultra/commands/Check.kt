@@ -26,8 +26,8 @@ object CheckCommand {
             val arrayNode = rootNode as ArrayNode
             val found = arrayNode.any { it.asText().equals(nick, ignoreCase = true) }
 
-            if (found) gT("commands.check.found")
-            else gT("commands.check.not_found")
+            if (found) gT("commands.check.found").toString()
+            else gT("commands.check.not_found").toString()
 
         } catch (e: IOException) {
             "Error when checking whitelist: ${e.message}"

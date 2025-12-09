@@ -19,16 +19,16 @@ object ChangeCommand {
         val index = arrayNode.indexOf(arrayNode.find { it.asText() == oldNick })
 
         if (index == -1) {
-            return WLUCore.gT("commands.change.old_not_found")
+            return WLUCore.gT("commands.change.old_not_found").toString()
         }
 
         if (arrayNode.any { it.asText() == newNick }) {
-            return WLUCore.gT("commands.change.duplicate")
+            return WLUCore.gT("commands.change.duplicate").toString()
         }
 
         arrayNode.set(index, mapper.convertValue(newNick, JsonNode::class.java))
         mapper.writeValue(dirWL, arrayNode)
 
-        return WLUCore.gT("commands.change.success")
+        return WLUCore.gT("commands.change.success").toString()
     }
 }

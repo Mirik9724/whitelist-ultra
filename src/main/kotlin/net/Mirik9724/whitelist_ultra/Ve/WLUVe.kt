@@ -36,7 +36,12 @@ class WLUVe @Inject constructor( // <--- ВАЖНО: аннотация @Inject
         subCommands["check"] = CheckVelocity()
 
 
-        server.commandManager.register("whitelist-ultra", MainCommand(), "wlu")
+        val meta: CommandMeta = server.commandManager.metaBuilder("whitelist-ultra")
+            .aliases("wlu")
+            .plugin(pluginContainer)
+            .build()
+
+        server.commandManager.register(meta, MainCommand())
 
         server.eventManager.register(
             pluginContainer,
@@ -59,7 +64,7 @@ class WLUVe @Inject constructor( // <--- ВАЖНО: аннотация @Inject
                 sub.execute(invocation)
             } else {
                 invocation.source().sendMessage(net.kyori.adventure.text.Component.text(
-                    WLUCore.gT("commands.error.underknewcom").replace("@undsubcom", args[0])
+                    WLUCore.gT("commands.error.underknewcom").toString().replace("@undsubcom", args[0])
                 ))
             }
         }

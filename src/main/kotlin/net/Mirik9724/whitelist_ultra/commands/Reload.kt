@@ -6,6 +6,6 @@ object ReloadCommand {
 
     fun reload(): String {
         // В будущем сюда можно добавить: обновление переводов, кеша, файлов и т.д.
-        return WLUCore.gT("reload")
+        return WLUCore.gT("reload").toString()
     }
 }

@@ -16,12 +16,15 @@ placeholders:
   "@custom": "CustomValue"
   "@test": "Test!"
 
+check_updates: "True"
+
 error:
   file_: "The test messenge"
   file_does_not-exist: "File does not exist."
   underknewcom: "Unknown command: @undsubcom"
   subc: "Please specify the subcommand."
 commands:
+  subc: "Please write a subcommand"
   usage: "Usage: " # +usage for command
   change:
     old_not_found: "The old nickname was not found in the list."

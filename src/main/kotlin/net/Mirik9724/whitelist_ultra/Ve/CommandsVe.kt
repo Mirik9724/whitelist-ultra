@@ -53,7 +53,7 @@ class RemoveVelocity(private val server: ProxyServer) : SimpleCommand {
     override fun execute(invocation: SimpleCommand.Invocation) {
         val args = invocation.arguments()
         if (args.isEmpty()) {
-            invocation.source().sendMessage(Component.text(WLUCore.gT("commands.usage") + " /whitelist-ultra del <player>"))
+            invocation.source().sendMessage(Component.text(WLUCore.gT("commands.usage") .toString()  + " /whitelist-ultra del <player>"))
             return
         }
 

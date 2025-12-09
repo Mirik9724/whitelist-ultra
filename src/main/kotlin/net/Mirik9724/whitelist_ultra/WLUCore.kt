@@ -66,7 +66,10 @@ object WLUCore{
         }
 
         loadTranslations()
-        checkForUpdates()
+        if(gT("check_updates").toString() == "True"){
+            checkForUpdates()
+        }
+
     }
 
     fun checkForUpdates() {
@@ -95,19 +98,19 @@ object WLUCore{
                 val num2 = if (i < pluginParts.size) pluginParts[i].toIntOrNull() ?: 0 else 0
 
                 if (num1 > num2) {
-                    logger.info("${gT("version.v_found")} https://modrinth.com/plugin/whitelist-ultra/version/$latestVersion")
+                    logger.info("${gT("version.v_found")} https://www.curseforge.com/minecraft/bukkit-plugins/whitelist-ultra/file")
                     return
                 } else if (num1 < num2) {
-                    logger.info(gT("version.v_no_found"))
+                    logger.info(gT("version.v_no_found").toString())
                     return
                 }
             }
 
             // Если цифровые части совпадают, сравниваем буквы (b > a)
             if (latestLetter.compareTo(pluginLetter) > 0) {
-                logger.info("${gT("version.v_found")} https://modrinth.com/plugin/whitelist-ultra/version/$latestVersion")
+                logger.info("${gT("version.v_found")} https://www.curseforge.com/minecraft/bukkit-plugins/whitelist-ultra/file")
             } else {
-                logger.info(gT("version.v_no_found"))
+                logger.info(gT("version.v_no_found").toString())
             }
 
         } catch (e: Exception) {

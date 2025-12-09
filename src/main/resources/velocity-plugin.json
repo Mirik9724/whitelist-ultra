@@ -1,7 +1,7 @@
 {
   "id": "whitelist_ultra",
   "name": "Whitelist-Ultra",
-  "version": "0.8",
+  "version": "0.8.2",
   "authors": ["Mirik9724"],
   "main": "net.Mirik9724.whitelist_ultra.Ve.WLUVe",
   "description": "Whitelist works with nicknames without UUID and case sensitive.",

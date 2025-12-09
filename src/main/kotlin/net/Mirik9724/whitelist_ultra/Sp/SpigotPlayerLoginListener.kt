@@ -19,7 +19,7 @@ class SpigotPlayerLoginListener(private val plugin: JavaPlugin) : Listener {
 
         if (!allowedPlayers.map { it.trim() }.contains(playerName.trim())) {
             val kickMessage = WLUCore.gT("kick")
-            event.disallow(PlayerLoginEvent.Result.KICK_WHITELIST, kickMessage)
+            event.disallow(PlayerLoginEvent.Result.KICK_WHITELIST, kickMessage.toString())
         }
     }
 }

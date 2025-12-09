@@ -9,7 +9,7 @@ import java.io.IOException
 object ListCommand {
 
     fun execute(file: File): String {
-        val whitelistPlayers = StringBuilder(gT("commands.list"))
+        val whitelistPlayers = StringBuilder(gT("commands.list").toString())
 
         return try {
             val mapper = ObjectMapper()

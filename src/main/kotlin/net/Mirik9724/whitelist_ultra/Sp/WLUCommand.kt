@@ -21,7 +21,7 @@ class WLUCommand(private val plugin: JavaPlugin) : CommandExecutor {
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<String>): Boolean {
         if (args.isEmpty()) {
-            sender.sendMessage(WLUCore.gT("commands.subc"))
+            sender.sendMessage(WLUCore.gT("commands.subc").toString())
             return false
         }
 
@@ -29,7 +29,7 @@ class WLUCommand(private val plugin: JavaPlugin) : CommandExecutor {
         return if (subCommand != null) {
             subCommand.onCommand(sender, command, label, args)
         } else {
-            sender.sendMessage(WLUCore.gT("commands.error.underknewcom").replace("@undsubcom", args[0]))
+            sender.sendMessage(WLUCore.gT("commands.error.underknewcom").toString().replace("@undsubcom", args[0]))
             false
         }
     }
