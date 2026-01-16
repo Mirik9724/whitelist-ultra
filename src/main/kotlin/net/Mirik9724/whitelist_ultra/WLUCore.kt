@@ -22,6 +22,12 @@ object WLUCore{
 
         tryCreatePath(dataFolder)
         copyFileFromJar(conf, "plugins/whitelist_ultra")
+        try{
+            updateYmlFromJar(conf, "plugins/whitelist_ultra/" + conf, this::class.java.classLoader)
+        }catch(e:Exception){
+            log.info(e.toString())
+        }
+
         data = loadYmlFile("plugins/whitelist_ultra/"+ conf)
 
         val dirWL = File(dataFolder, whitelist_f)

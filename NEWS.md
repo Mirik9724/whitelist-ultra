@@ -9,3 +9,4 @@ add metrics
 add check updates  
 del translated configs  
 optimaze storage  
+fix update yml  
