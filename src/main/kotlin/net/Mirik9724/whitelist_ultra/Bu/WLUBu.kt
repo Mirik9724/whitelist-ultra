@@ -1,6 +1,6 @@
 package net.Mirik9724.whitelist_ultra.Bu
 
-import net.Mirik9724.api.logger_
+import net.Mirik9724.api.log
 import net.Mirik9724.whitelist_ultra.WLUCore
 import net.md_5.bungee.api.plugin.Plugin
 import net.md_5.bungee.api.plugin.Command
@@ -13,7 +13,6 @@ class WLUBu : Plugin() {
     override fun onEnable() {
         WLUCore
 
-        // Регистрируем подкоманды
         subCommands["add"] = AddBungee()
         subCommands["list"] = ListBungee()
         subCommands["remove"] = RemoveBungee()
@@ -22,10 +21,9 @@ class WLUBu : Plugin() {
         subCommands["reload"] = ReloadBungee()
         subCommands["check"] = CheckBungee()
 
-        // Регистрируем главную команду
         proxy.pluginManager.registerCommand(this, MainCommand())
 
-        logger_.info("WLU Bungee plugin enabled")
+        log.info("WLU Bungee plugin enabled")
     }
 
     inner class MainCommand : Command("whitelist-ultra") {

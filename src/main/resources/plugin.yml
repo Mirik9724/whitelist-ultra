@@ -1,14 +1,14 @@
 name: whitelist_ultra
-version: '0.8.2'
-main: net.Mirik9724.whitelist_ultra.Sp.WLUSp
+version: "${version}"
+main: net.Mirik9724.whitelist_ultra.Bukkit.WLUBu
 api-version: '1.18'
 description: Whitelist works with nicknames without uuid and case sensitive.
-
+depend: [MirikAPI]
 commands:
   whitelist-ultra:
     aliases:
       - wlu
-    usage: /whitelist-ultra <add|list|remove|reload> <player>
+    usage: /wlu <reload|list|check|change|del|add>
     permission: whitelist-ultra.admin
     permission-messange: You don not have permission for this command
     subcommands:
@@ -21,27 +21,22 @@ commands:
         permission: whitelist-ultra.remove
         permission-messange: You don not have permission for this command
         aliases:
-          - delete
           - del
-          - rem
-          - d
       list:
         description: Show WL
         permission: whitelist-ultra.list
         permission-messange: You don not have permission for this command
-        aliases:
-          - l
       reload:
         description: Reload plugin
         permission: whitelist-ultra.reload
         permission-messange: You don not have permission for this command
-        aliases:
-          - rel
       check:
         description: Reload plugin
         permission: whitelist-ultra.check
         permission-messange: You don not have permission for this command
-        aliases:
-          - ch
+      change:
+        description: Reload plugin
+        permission: whitelist-ultra.check
+        permission-messange: You don not have permission for this command
 
 folia-supported: true

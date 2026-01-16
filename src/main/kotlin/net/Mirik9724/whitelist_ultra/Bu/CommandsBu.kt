@@ -44,19 +44,6 @@ class ListBungee : Command("whitelistlist") {
     }
 }
 
-//class ChangeBungee : Command("whitelistchange") {
-//    override fun execute(sender: CommandSender, args: Array<out String>) {
-//        if (args.size < 2) {
-//            sender.sendMessage(WLUCore.gT("commands.usage") + " /whitelist-ultra change <old> <new>")
-//            return
-//        }
-//
-//        val result = ChangeCommand(args[0], args[1], dirWL)
-//        sender.sendMessage(result)
-//    }
-//}
-
-
 class RemoveBungee : Command("whitelistremove") {
 
     override fun execute(sender: CommandSender, args: Array<out String>) {

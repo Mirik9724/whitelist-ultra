@@ -1,12 +1,3 @@
-# En - Here you can download ready-made translations of the config into your language (if it is translated)
-# Ru - Здесь вы можете скачать готовые переводы конфига на ваш язык(если он переведён)
-# Ua - Тут ви можете завантажити готові переклади конфігу на вашу мову (якщо вона перекладена)
-# Ch(Simple) - 您可以在此处下载现成的配置翻译版本（如果已翻译）
-# Fr - Ici, vous pouvez télécharger des traductions prêtes à l'emploi de la configuration dans votre langue (si elle est traduite)
-# La - Hic potes download praeparata configurationis translationes in linguam tuam(si translatum est)
-# De - Hier können Sie fertige Übersetzungen der Konfiguration in Ihre Sprache(falls verfügbar)
-# https://github.com/Mirik9724/whitelist-ultra/blob/main/lang
-
 # Global placeholders
 # @nick - player`s nickname(you cann`t use it everywhere)
 #
@@ -15,8 +6,6 @@ placeholders:
   "@fu": "Fu!!!"
   "@custom": "CustomValue"
   "@test": "Test!"
-
-check_updates: "True"
 
 error:
   file_: "The test messenge"
@@ -47,7 +36,9 @@ commands:
   list: "Whitelist: " # + list of player in WLU
   player: "Player @nick"
 reload: "The plugin has been successfully reloaded!"
-kick: "You are not on the whitelist."
+kick: |
+  You are not on the whitelist
+  Join to us in Discord!
 
 version:
   v_no_connect: "New plugin versions failed."
@@ -55,16 +46,5 @@ version:
   v_found: "Update found here is the latest version: @new_v"
 
 # Use BStats metrics (Please do not disable it so that I have an idea about the plugin users (anonymous info))
-use-metric: True
-
-# For dev(me):
-debag: False #Now it no work
-# import net.Mirik9724.whitelist_ultra.Sp.WLU.nick
-# WLU.nick
-#
-# plugin.logger.warning(")
-# plugin.logger.info("")
-# plugin.logger.fatal("")
-# WLU.instance.logger.info("")
-#
-# println - DELITE
+use-metric: "True"
+check_updates: "True"

@@ -1,4 +1,4 @@
-package net.Mirik9724.whitelist_ultra.Ve
+package net.Mirik9724.whitelist_ultra.Velocity
 
 import com.velocitypowered.api.command.CommandMeta
 import com.velocitypowered.api.command.SimpleCommand
@@ -8,17 +8,29 @@ import com.velocitypowered.api.plugin.Plugin
 import com.velocitypowered.api.plugin.PluginContainer
 import com.velocitypowered.api.plugin.annotation.DataDirectory
 import com.velocitypowered.api.proxy.ProxyServer
-import net.Mirik9724.api.logger_
+import com.velocitypowered.api.plugin.Dependency
+import net.Mirik9724.api.bstats.velocity.Metrics
+import net.Mirik9724.api.log
+import net.Mirik9724.whitelist_ultra.Commands.wld
 import net.Mirik9724.whitelist_ultra.WLUCore
+import net.Mirik9724.whitelist_ultra.WLUCore.data
 import net.Mirik9724.whitelist_ultra.vers
 import java.nio.file.Path
 import javax.inject.Inject
 
-@Plugin(id = "whitelist-ultra", name = "WhitelistUltra", version = vers, authors = ["Mirik9724"])
-class WLUVe @Inject constructor( // <--- ВАЖНО: аннотация @Inject
+@Plugin(id = "whitelist-ultra",
+    name = "WhitelistUltra",
+    version = vers,
+    authors = ["Mirik9724"],
+    dependencies = [
+        Dependency(id = "mirikapi", optional = false)
+    ]
+)
+class WLUVe @Inject constructor(
     private val server: ProxyServer,
     @DataDirectory private val dataDirectory: Path,
     private val pluginContainer: PluginContainer,
+    private val metricsFactory: Metrics.Factory
 ) {
 
     private val subCommands: MutableMap<String, SimpleCommand> = HashMap()
@@ -30,8 +42,8 @@ class WLUVe @Inject constructor( // <--- ВАЖНО: аннотация @Inject
         subCommands["add"] = AddVelocity()
         subCommands["list"] = ListVelocity()
         subCommands["remove"] = RemoveVelocity(server)
+        subCommands["change"] = ChangeVelocity()
         subCommands["del"] = RemoveVelocity(server)
-        subCommands["delite"] = RemoveVelocity(server)
         subCommands["reload"] = ReloadVelocity()
         subCommands["check"] = CheckVelocity()
 
@@ -45,10 +57,14 @@ class WLUVe @Inject constructor( // <--- ВАЖНО: аннотация @Inject
 
         server.eventManager.register(
             pluginContainer,
-            VelocityPlayerLoginListener(server, pluginContainer, dataDirectory)
+            VelocityPlayerLoginListener()
         )
 
-        logger_.info("WLU Velocity plugin enabled")
+        if(data["use-metric"] == "true") {
+            metricsFactory.make(this, 28855);
+        }
+
+        log.info("WLU has loaded")
     }
 
     inner class MainCommand : SimpleCommand {
@@ -67,6 +83,31 @@ class WLUVe @Inject constructor( // <--- ВАЖНО: аннотация @Inject
                     WLUCore.gT("commands.error.underknewcom").toString().replace("@undsubcom", args[0])
                 ))
             }
+        }
+
+        override fun suggest(invocation: SimpleCommand.Invocation): MutableList<String> {
+            val args = invocation.arguments()
+            if (args.isEmpty()) return subCommands.keys.toMutableList()
+
+            if (args.size == 1) {
+                val input = args[0].lowercase()
+                return subCommands.keys
+                    .filter { it.startsWith(input) }
+                    .toMutableList()
+            }
+
+            if (args.size == 2) {
+                val sub = args[0].lowercase()
+                if (sub == "remove" || sub == "del" || sub == "check" || sub == "change") {
+                    val input = args[1].lowercase()
+                    val whitelistPlayers = wld.map { it.asText() }
+                    return whitelistPlayers
+                        .filter { it.lowercase().startsWith(input) }
+                        .toMutableList()
+                }
+            }
+
+            return mutableListOf()
         }
     }
 }
