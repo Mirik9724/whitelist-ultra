@@ -5,7 +5,7 @@ plugins{
 }
 
 group = "net.Mirik9724"
-val vers = "0.9.1"
+val vers = "0.9.2"
 val build = "b2"
 version = vers + "-" + build
 
@@ -38,7 +38,7 @@ dependencies{
     implementation("com.fasterxml.jackson.core:jackson-databind:2.14.1")
     implementation("com.fasterxml.jackson.core:jackson-annotations:2.14.1")
 
-    compileOnly("com.github.Mirik9724:MirikAPI:v0.1.5.8")
+    compileOnly("com.github.Mirik9724:MirikAPI:v0.1.5.9")
 }
 
 val targetJavaVersion = 17

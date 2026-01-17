@@ -10,10 +10,10 @@ import com.velocitypowered.api.plugin.annotation.DataDirectory
 import com.velocitypowered.api.proxy.ProxyServer
 import com.velocitypowered.api.plugin.Dependency
 import net.Mirik9724.api.bstats.velocity.Metrics
-import net.Mirik9724.api.log
 import net.Mirik9724.whitelist_ultra.Commands.wld
 import net.Mirik9724.whitelist_ultra.WLUCore
 import net.Mirik9724.whitelist_ultra.WLUCore.data
+import net.Mirik9724.whitelist_ultra.WLUCore.log
 import net.Mirik9724.whitelist_ultra.vers
 import java.nio.file.Path
 import javax.inject.Inject

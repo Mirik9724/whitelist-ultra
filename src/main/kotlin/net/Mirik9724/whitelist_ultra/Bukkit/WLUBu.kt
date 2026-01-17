@@ -1,9 +1,9 @@
 package net.Mirik9724.whitelist_ultra.Bukkit
 
 import net.Mirik9724.api.bstats.bukkit.Metrics
-import net.Mirik9724.api.log
 import net.Mirik9724.whitelist_ultra.WLUCore
 import net.Mirik9724.whitelist_ultra.WLUCore.data
+import net.Mirik9724.whitelist_ultra.WLUCore.log
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 

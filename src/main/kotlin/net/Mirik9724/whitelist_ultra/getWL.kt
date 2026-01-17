@@ -2,7 +2,7 @@ package net.Mirik9724.whitelist_ultra
 
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
-import net.Mirik9724.api.log
+import net.Mirik9724.whitelist_ultra.WLUCore.log
 import java.io.File
 
 fun getAllowedPlayers(file: File): List<String> {

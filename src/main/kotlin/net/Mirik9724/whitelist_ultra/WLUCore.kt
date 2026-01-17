@@ -3,6 +3,7 @@ package net.Mirik9724.whitelist_ultra
 import net.Mirik9724.api.*
 import net.Mirik9724.whitelist_ultra.Commands.loadWL
 import net.Mirik9724.whitelist_ultra.Commands.wld
+import org.slf4j.Logger
 import org.yaml.snakeyaml.Yaml
 import java.io.File
 
@@ -16,12 +17,13 @@ object WLUCore{
     lateinit var data: Map<String, String>
     lateinit var placeholders: Map<String, String>
     const val udhp = "You do not have permission for this command"
+    lateinit var log: Logger
 
     init {
-        logInit("WLU")
+        log = logInit("WLU")
 
         tryCreatePath(dataFolder)
-        copyFileFromJar(conf, "plugins/whitelist_ultra")
+        copyFileFromJar(conf, "plugins/whitelist_ultra", this.javaClass.classLoader)
         try{
             updateYmlFromJar(conf, "plugins/whitelist_ultra/" + conf, this::class.java.classLoader)
         }catch(e:Exception){

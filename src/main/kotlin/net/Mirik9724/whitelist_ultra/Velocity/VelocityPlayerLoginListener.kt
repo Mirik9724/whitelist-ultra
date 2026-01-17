@@ -4,9 +4,9 @@ import com.velocitypowered.api.event.ResultedEvent
 import com.velocitypowered.api.event.Subscribe
 import com.velocitypowered.api.event.connection.LoginEvent
 import net.Mirik9724.api.toMM
-import net.Mirik9724.api.log
 import net.Mirik9724.whitelist_ultra.Commands.wld
 import net.Mirik9724.whitelist_ultra.WLUCore.gT
+import net.Mirik9724.whitelist_ultra.WLUCore.log
 
 class VelocityPlayerLoginListener() {
     @Subscribe
