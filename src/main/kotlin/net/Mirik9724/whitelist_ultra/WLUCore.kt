@@ -24,11 +24,7 @@ object WLUCore{
 
         tryCreatePath(dataFolder)
         copyFileFromJar(conf, "plugins/whitelist_ultra", this.javaClass.classLoader)
-        try{
-            updateYmlFromJar(conf, "plugins/whitelist_ultra/" + conf, this::class.java.classLoader)
-        }catch(e:Exception){
-            log.info(e.toString())
-        }
+        updateYmlFromJar(conf, "plugins/whitelist_ultra/" + conf, this::class.java.classLoader)
 
         data = loadYmlFile("plugins/whitelist_ultra/"+ conf)
 
