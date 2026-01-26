@@ -23,7 +23,7 @@ import javax.inject.Inject
     version = vers,
     authors = ["Mirik9724"],
     dependencies = [
-        Dependency(id = "mirikapi", optional = false)
+        Dependency(id = "mirikapi")
     ]
 )
 class WLUVe @Inject constructor(
@@ -34,6 +34,9 @@ class WLUVe @Inject constructor(
 ) {
 
     private val subCommands: MutableMap<String, SimpleCommand> = HashMap()
+    companion object {
+        var customnamesforgeysermcInstaled = false
+    }
 
     @Subscribe
     fun onProxyInitialization(event: ProxyInitializeEvent) {
@@ -63,6 +66,8 @@ class WLUVe @Inject constructor(
         if(data["use-metric"] == "true") {
             metricsFactory.make(this, 28855);
         }
+
+        customnamesforgeysermcInstaled = server.pluginManager.getPlugin("customnamesforgeysermc").isPresent
 
         log.info("WLU has loaded")
     }

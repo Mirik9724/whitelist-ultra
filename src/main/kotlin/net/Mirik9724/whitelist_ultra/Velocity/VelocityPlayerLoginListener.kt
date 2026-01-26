@@ -9,13 +9,30 @@ import net.Mirik9724.whitelist_ultra.WLUCore.gT
 import net.Mirik9724.whitelist_ultra.WLUCore.log
 
 class VelocityPlayerLoginListener() {
+    companion object {
+        lateinit var instance: VelocityPlayerLoginListener
+    }
+    init {
+        instance = this
+    }
+
+
+    fun check(player: String): Boolean {
+        log.info(wld.toString())
+        if (!wld.any { it.asText().trim() == player }) {
+            return false
+        }
+        else{
+            return true
+        }
+    }
+
     @Subscribe
     fun onLogin(event: LoginEvent) {
-        val playerName = event.player.username
-
-        log.info(wld.toString())
-        if (!wld.any { it.asText().trim() == playerName }) {
-            event.result = ResultedEvent.ComponentResult.denied(toMM(gT("kick")))
+        if(WLUVe.customnamesforgeysermcInstaled != true){
+            if(check(event.player.username) == false){
+                event.result = ResultedEvent.ComponentResult.denied(toMM(gT("kick")))
+            }
         }
     }
 }

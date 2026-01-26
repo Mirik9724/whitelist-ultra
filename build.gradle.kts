@@ -2,11 +2,13 @@ plugins{
     id("com.github.johnrengelman.shadow") version "7.1.2"
     kotlin("jvm") version "2.0.20-Beta1"
     kotlin("kapt") version "2.0.20-Beta1"
+    id("xyz.jpenilla.run-paper") version "2.3.1"
+    id("xyz.jpenilla.run-velocity") version "2.3.1"
 }
 
 group = "net.Mirik9724"
-val vers = "0.9.2"
-val build = "b2"
+val vers = "0.9.3"
+val build = "b5"
 version = vers + "-" + build
 
 repositories{
@@ -38,7 +40,7 @@ dependencies{
     implementation("com.fasterxml.jackson.core:jackson-databind:2.14.1")
     implementation("com.fasterxml.jackson.core:jackson-annotations:2.14.1")
 
-    compileOnly("com.github.Mirik9724:MirikAPI:v0.1.5.9")
+    compileOnly("com.github.Mirik9724:MirikAPI:v0.1.5.10")
 }
 
 val targetJavaVersion = 17
