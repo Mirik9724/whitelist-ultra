@@ -40,7 +40,7 @@ object WLUCore{
 
         if(gT("check_updates").toString() == "True"){
             if(isAvailableNewVersion("https://raw.githubusercontent.com/Mirik9724/whitelist-ultra/main/V.txt", vers) == true){
-
+                log.info("pls update plugin")
             }
         }
 

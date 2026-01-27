@@ -18,7 +18,7 @@ class VelocityPlayerLoginListener() {
 
 
     fun check(player: String): Boolean {
-        log.info(wld.toString())
+//        log.info(wld.toString())
         if (!wld.any { it.asText().trim() == player }) {
             return false
         }
