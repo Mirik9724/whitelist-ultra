@@ -9,14 +9,14 @@ import com.velocitypowered.api.plugin.PluginContainer
 import com.velocitypowered.api.plugin.annotation.DataDirectory
 import com.velocitypowered.api.proxy.ProxyServer
 import com.velocitypowered.api.plugin.Dependency
-import net.Mirik9724.api.bstats.velocity.Metrics
 import net.Mirik9724.whitelist_ultra.Commands.wld
 import net.Mirik9724.whitelist_ultra.WLUCore
 import net.Mirik9724.whitelist_ultra.WLUCore.data
 import net.Mirik9724.whitelist_ultra.WLUCore.log
 import net.Mirik9724.whitelist_ultra.vers
 import java.nio.file.Path
-import javax.inject.Inject
+import com.google.inject.Inject
+import net.Mirik9724.api.bstats.velocity.Metrics
 
 @Plugin(id = "whitelist-ultra",
     name = "WhitelistUltra",
@@ -26,7 +26,8 @@ import javax.inject.Inject
         Dependency(id = "mirikapi")
     ]
 )
-class WLUVe @Inject constructor(
+class WLUVe @Inject
+constructor(
     private val server: ProxyServer,
     @DataDirectory private val dataDirectory: Path,
     private val pluginContainer: PluginContainer,
@@ -64,7 +65,24 @@ class WLUVe @Inject constructor(
         )
 
         if(data["use-metric"] == "true") {
+//            Metrics(this, server, log, dataDirectory, 28855)
+
             metricsFactory.make(this, 28855);
+
+
+//            Metrics.Factory(server, log, dataDirectory)
+//                .make(this, 28855)
+
+//            net.Mirik9724.api.bstats.velocity.Metrics::class.java
+//                .getDeclaredConstructor(
+//                    Any::class.java,
+//                    ProxyServer::class.java,
+//                    logger::class.java,
+//                    Path::class.java,
+//                    Int::class.java
+//                )
+//                .apply { isAccessible = true }
+//                .newInstance(this, server, logger, dataDirectory, 28855) as net.Mirik9724.api.bstats.velocity.Metrics
         }
 
         customnamesforgeysermcInstaled = server.pluginManager.getPlugin("customnamesforgeysermc").isPresent

@@ -7,8 +7,8 @@ plugins{
 }
 
 group = "net.Mirik9724"
-val vers = "0.9.4"
-val build = "b1"
+val vers = "0.9.4.1"
+val build = "b7"
 version = vers + "-" + build
 
 repositories{
