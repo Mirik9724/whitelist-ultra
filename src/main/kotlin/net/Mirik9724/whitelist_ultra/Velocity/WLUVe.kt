@@ -37,6 +37,7 @@ constructor(
     private val subCommands: MutableMap<String, SimpleCommand> = HashMap()
     companion object {
         var customnamesforgeysermcInstaled = false
+        var miloginInstaled = false
     }
 
     @Subscribe
@@ -86,6 +87,7 @@ constructor(
         }
 
         customnamesforgeysermcInstaled = server.pluginManager.getPlugin("customnamesforgeysermc").isPresent
+        miloginInstaled = server.pluginManager.getPlugin("milogin").isPresent
 
         log.info("WLU has loaded")
     }

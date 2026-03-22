@@ -5,6 +5,7 @@ import com.velocitypowered.api.event.Subscribe
 import com.velocitypowered.api.event.connection.LoginEvent
 import net.Mirik9724.api.toMM
 import net.Mirik9724.whitelist_ultra.Commands.wld
+import net.Mirik9724.whitelist_ultra.Velocity.WLUVe.Companion.miloginInstaled
 import net.Mirik9724.whitelist_ultra.WLUCore.gT
 import net.Mirik9724.whitelist_ultra.WLUCore.log
 
@@ -18,7 +19,6 @@ class VelocityPlayerLoginListener() {
 
 
     fun check(player: String): Boolean {
-//        log.info(wld.toString())
         if (!wld.any { it.asText().trim() == player }) {
             return false
         }
@@ -29,8 +29,8 @@ class VelocityPlayerLoginListener() {
 
     @Subscribe
     fun onLogin(event: LoginEvent) {
-        if(WLUVe.customnamesforgeysermcInstaled != true){
-            if(check(event.player.username) == false){
+        if(WLUVe.customnamesforgeysermcInstaled or WLUVe.miloginInstaled != true){
+            if(check(event.player.username.toString()) == false){
                 event.result = ResultedEvent.ComponentResult.denied(toMM(gT("kick")))
             }
         }

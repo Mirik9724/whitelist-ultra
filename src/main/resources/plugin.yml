@@ -1,7 +1,7 @@
 name: whitelist_ultra
 version: "${version}"
 main: net.Mirik9724.whitelist_ultra.Bukkit.WLUBu
-api-version: '1.18'
+api-version: '1.13'
 description: Whitelist works with nicknames without uuid and case sensitive.
 depend: [MirikAPI]
 commands:

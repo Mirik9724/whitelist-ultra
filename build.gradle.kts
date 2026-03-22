@@ -7,8 +7,8 @@ plugins{
 }
 
 group = "net.Mirik9724"
-val vers = "0.9.4.1"
-val build = "b7"
+val vers = "0.9.4.2"
+val build = "b1"
 version = vers + "-" + build
 
 repositories{
@@ -27,8 +27,6 @@ dependencies{
     compileOnly("org.spigotmc:spigot-api:1.18.2-R0.1-SNAPSHOT")
     compileOnly("com.velocitypowered:velocity-api:3.4.0-SNAPSHOT")
     kapt("com.velocitypowered:velocity-api:3.4.0-SNAPSHOT")
-
-    implementation(kotlin("stdlib-jdk8"))
 
     implementation("net.kyori:adventure-api:4.14.0")
     implementation("net.kyori:adventure-platform-bukkit:4.3.0")
