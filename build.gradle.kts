@@ -7,8 +7,8 @@ plugins{
 }
 
 group = "net.Mirik9724"
-val vers = "0.9.4.2"
-val build = "b1"
+val vers = "0.9.5"
+val build = "b14"
 version = vers + "-" + build
 
 repositories{
@@ -37,6 +37,8 @@ dependencies{
     implementation("com.fasterxml.jackson.core:jackson-core:2.14.1")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.14.1")
     implementation("com.fasterxml.jackson.core:jackson-annotations:2.14.1")
+
+    implementation("net.dv8tion:JDA:5.3.0")
 
     compileOnly("com.github.Mirik9724:MirikAPI:v0.1.5.10")
 }

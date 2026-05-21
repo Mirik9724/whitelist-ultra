@@ -1,6 +1,7 @@
 package net.Mirik9724.whitelist_ultra
 
 import net.Mirik9724.api.*
+import net.Mirik9724.api.net.Mirik9724.whitelist_ultra.Ds.Discord
 import net.Mirik9724.whitelist_ultra.Commands.loadWL
 import net.Mirik9724.whitelist_ultra.Commands.wld
 import org.slf4j.Logger
@@ -11,10 +12,12 @@ import java.io.File
 object WLUCore{
     var nick: String = "Test"
     const val conf = "config.yml"
+    const val ds = "ds.yml"
     const val whitelist_f = "whitelist.json"
     var dataFolder = File("plugins/whitelist_ultra")
     val dirWL = File(dataFolder, whitelist_f)
     lateinit var data: Map<String, String>
+    lateinit var dsdata: Map<String, String>
     lateinit var placeholders: Map<String, String>
     const val udhp = "You do not have permission for this command"
     lateinit var log: Logger
@@ -26,7 +29,11 @@ object WLUCore{
         copyFileFromJar(conf, "plugins/whitelist_ultra", this.javaClass.classLoader)
         updateYmlFromJar(conf, "plugins/whitelist_ultra/" + conf, this::class.java.classLoader)
 
+        copyFileFromJar(ds, "plugins/whitelist_ultra", this.javaClass.classLoader)
+        updateYmlFromJar(ds, "plugins/whitelist_ultra/" + ds, this::class.java.classLoader)
+
         data = loadYmlFile("plugins/whitelist_ultra/"+ conf)
+        dsdata = loadYmlFile("plugins/whitelist_ultra/"+ ds)
 
         val dirWL = File(dataFolder, whitelist_f)
         if (!dirWL.parentFile.exists()) {
@@ -45,6 +52,11 @@ object WLUCore{
         }
 
         wld = loadWL()
+
+        if(gT("discordBot").toString() == "true"){
+            val discordBot = Discord()
+            discordBot.startBot(dsdata["token"].toString()!!)
+        }
     }
 
 

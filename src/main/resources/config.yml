@@ -45,6 +45,8 @@ version:
   v_no_found: "Update not found."
   v_found: "Update found here is the latest version: @new_v"
 
+discordBot: False
+
 # Use BStats metrics (Please do not disable it so that I have an idea about the plugin users (anonymous info))
 use-metric: "True"
 check_updates: "True"

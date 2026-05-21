@@ -1,0 +1,19 @@
+#Discord ticket manager
+
+token: "Empty"
+namesOfTickets: "@q1-@q2"
+
+ticketCategoryId: "876543210987654321"
+moderatorRoleId: "112233445566778899"
+whitelistRoleId: ""
+
+embedTitle: "Server Whitelist Application"
+embedDescription: "Click the button below to open a ticket and apply for the whitelist."
+embedColor: "#5865F2"
+buttonText: "Open Ticket"
+
+modal:
+  q1: "Nick"
+  a1: "Example player333"
+  q2: "Real name"
+  a2: "Ivan"
