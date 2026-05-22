@@ -12,6 +12,43 @@ embedDescription: "Click the button below to open a ticket and apply for the whi
 embedColor: "#5865F2"
 buttonText: "Open Ticket"
 
+no_questions: "❌ Error: Whitelist questions are not configured in dsdata."
+no_permission: "❌ Error: You do not have permission to use these buttons."
+invalid_ticket: "❌ Error: Invalid ticket format in channel topic."
+
+cannot_manage_user: "⚠️ Cannot manage this user!"
+game_db_updated: "🚀 Game database updated for **%nick%**."
+
+role_added: "✅ Role **%role%** has been added to %user%."
+role_processed: "✅ Role **%role%** processed (Hierarchy warning skipped)."
+role_failed: "⚠️ Failed to add role: %error%"
+
+nick_changed: "✅ Nickname changed to **%nick%** for %user%."
+nick_failed: "⚠️ Cannot change nickname: %error%"
+
+user_not_found: "⚠️ Could not find user in this guild."
+
+application_approved: "Application Approved (Deleting in 1 min...)"
+application_denied: "Application Denied (Deleting in 1 min...)"
+application_active: "New Whitelist Application"
+
+restore_button: "Restore / Undo"
+approve_button: "Approve"
+deny_button: "Deny"
+
+approved_by: "✅ **Application approved by %user%!**\nThis channel will be automatically deleted in **1 minute**. Click **Restore** to cancel."
+
+denied_by: "❌ **Application denied by %user%!**\nThis channel will be automatically deleted in **1 minute**. Click **Restore** to cancel."
+
+deletion_cancelled: "🔄 **Deletion cancelled by %user%.** Application is active again."
+deletion_not_found: "⚠️ Error: Deletion task not found or already executed."
+
+modal_title: "Заявка в Вайтлист"
+
+ticket_created: "Application created for %user% | %ping%"
+ticket_created_reply: "✅ Created at: %channel%"
+ticket_create_failed: "❌ Error: Failed to create ticket channel. Reason: %error%"
+
 modal:
   q1: "Nick"
   a1: "Example player333"

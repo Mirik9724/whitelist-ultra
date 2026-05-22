@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.node.ArrayNode
 import net.Mirik9724.api.loadYmlFile
 import net.Mirik9724.whitelist_ultra.WLUCore.conf
 import net.Mirik9724.whitelist_ultra.WLUCore.dirWL
+import net.Mirik9724.whitelist_ultra.WLUCore.ds
 import net.Mirik9724.whitelist_ultra.WLUCore.gT
 
 object Commands {
@@ -43,6 +44,7 @@ object Commands {
     fun Reload(): String {
         wld = loadWL()
         WLUCore.data = loadYmlFile("plugins/whitelist_ultra/"+ conf)
+        WLUCore.dsdata = loadYmlFile("plugins/whitelist_ultra/"+ ds)
         return WLUCore.gT("reload")
     }
 
